@@ -117,10 +117,12 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\Styles\Admin\Admin.css" />
+    <Content Include="Content\Styles\WebPage\WebPage.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Administrator.aspx" />
     <Content Include="Images\Category\DefaultCategoryImg.png" />
+    <Content Include="Images\Category\header-decor.png" />
     <Content Include="Pages\AdminPage\AdminPage.aspx" />
     <Content Include="Pages\AdminPage\AdminPageControl.ascx" />
     <Content Include="Pages\AdminPage\CategoryManager\CategoryControl.ascx" />
@@ -155,6 +157,7 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="MasterPages\WebPageTheme.Master" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -200,6 +203,13 @@
     </Compile>
     <Compile Include="Administrator.aspx.designer.cs">
       <DependentUpon>Administrator.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\WebPageTheme.Master.cs">
+      <DependentUpon>WebPageTheme.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\WebPageTheme.Master.designer.cs">
+      <DependentUpon>WebPageTheme.Master</DependentUpon>
     </Compile>
     <Compile Include="Pages\AdminPage\AdminPage.aspx.cs">
       <DependentUpon>AdminPage.aspx</DependentUpon>
@@ -255,7 +265,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\Product\" />
-    <Folder Include="MasterPages\" />
     <Folder Include="Pages\WebPage\" />
   </ItemGroup>
   <ItemGroup>

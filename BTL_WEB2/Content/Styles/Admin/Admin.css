@@ -9,10 +9,16 @@ a {
 
 
 .banner {
+    height: 100px;
     padding: 10px 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: white;
+}
+
+.banner a{
+    color: #D2FF72;
 }
 
 .nav-bar {

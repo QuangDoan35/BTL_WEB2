@@ -1,7 +1,9 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="AdminPageControl.ascx.cs" Inherits="BTL_WEB2.Pages.AdminPage.AdminPageControl" %>
+<style type="text/css">
+</style>
 <header>
-    <div class="banner">
-        Trang quản trị
+    <div class="auto-style1">
+        <h2>Trang quản trị</h2>
         <asp:LinkButton runat="server">Quay về trang WEB</asp:LinkButton>
     </div>
     <div class="nav-bar">
@@ -18,7 +20,8 @@
     </div>
 </header>
 
-<asp:PlaceHolder ID="plAdminPageControl" runat="server"></asp:PlaceHolder>
+<asp:PlaceHolder ID="plAdminPageControl" runat="server">
+</asp:PlaceHolder>
 
 <footer>
     this is footer
