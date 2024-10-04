@@ -6,7 +6,6 @@ namespace BTL_WEB2.Pages.AdminPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

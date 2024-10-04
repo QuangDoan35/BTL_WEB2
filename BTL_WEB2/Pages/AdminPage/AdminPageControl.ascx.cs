@@ -8,6 +8,12 @@ namespace BTL_WEB2.Pages.AdminPage
         {
             string request = Request["f"];
 
+            // Nếu request không có giá trị, đặt giá trị mặc định
+            if (string.IsNullOrEmpty(request))
+            {
+                request = "Category"; // Trang mặc định là Category
+            }
+
             switch (request)
             {
                 case "Category":

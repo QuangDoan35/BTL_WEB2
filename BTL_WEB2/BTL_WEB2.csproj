@@ -128,6 +128,7 @@
     <Content Include="Pages\AdminPage\CustomerManager\CustomerControl.ascx" />
     <Content Include="Pages\AdminPage\OrderManager\OrderControl.ascx" />
     <Content Include="Pages\AdminPage\ProductManager\ProductControl.ascx" />
+    <Content Include="Pages\WebPage\Default.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -245,6 +246,13 @@
     <Compile Include="Pages\AdminPage\ProductManager\ProductControl.ascx.designer.cs">
       <DependentUpon>ProductControl.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\WebPage\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\WebPage\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
@@ -257,7 +265,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\Product\" />
-    <Folder Include="Pages\WebPage\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

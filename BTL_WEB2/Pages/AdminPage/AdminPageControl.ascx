@@ -2,15 +2,14 @@
 <style type="text/css">
 </style>
 <header>
-    <div class="banner">
+    <div style="height: 100px; padding: 10px 50px; display: flex; justify-content: space-between; align-items: center; color: white; background-color: #5bc0be;">
         <h2>Trang quản trị</h2>
-        <asp:LinkButton runat="server">Quay về trang WEB</asp:LinkButton>
+        <a href="../WebPage/Default.aspx">Quay về trang WEB</a>
     </div>
     <div class="nav-bar">
         <div>logo</div>
         <div class="menu">
             <ul>
-                <li><a href="#">Trang chủ</a></li>
                 <li><a href="AdminPage.aspx?f=Category">Danh Mục</a></li>
                 <li><a href="AdminPage.aspx?f=Customer">Người dùng</a></li>
                 <li><a href="AdminPage.aspx?f=Order">Đơn đặt hàng</a></li>
@@ -20,9 +19,4 @@
     </div>
 </header>
 
-<asp:PlaceHolder ID="plAdminPageControl" runat="server">
-</asp:PlaceHolder>
-
-<footer>
-    this is footer
-</footer>
+<asp:PlaceHolder ID="plAdminPageControl" runat="server"></asp:PlaceHolder>
