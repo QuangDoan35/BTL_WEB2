@@ -2,7 +2,7 @@
 <style type="text/css">
 </style>
 <header>
-    <div class="auto-style1">
+    <div class="banner">
         <h2>Trang quản trị</h2>
         <asp:LinkButton runat="server">Quay về trang WEB</asp:LinkButton>
     </div>

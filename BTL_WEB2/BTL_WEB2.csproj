@@ -120,7 +120,6 @@
     <Content Include="Content\Styles\WebPage\WebPage.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Administrator.aspx" />
     <Content Include="Images\Category\DefaultCategoryImg.png" />
     <Content Include="Images\Category\header-decor.png" />
     <Content Include="Pages\AdminPage\AdminPage.aspx" />
@@ -196,13 +195,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Administrator.aspx.cs">
-      <DependentUpon>Administrator.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Administrator.aspx.designer.cs">
-      <DependentUpon>Administrator.aspx</DependentUpon>
     </Compile>
     <Compile Include="MasterPages\WebPageTheme.Master.cs">
       <DependentUpon>WebPageTheme.Master</DependentUpon>
