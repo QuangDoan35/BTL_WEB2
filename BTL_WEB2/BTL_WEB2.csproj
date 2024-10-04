@@ -99,13 +99,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Admin\AdminControl.ascx" />
-    <Content Include="Admin\Category\CategoryControl.ascx" />
-    <Content Include="Admin\Login.ascx" />
-    <Content Include="Admin\Menu.ascx" />
-    <Content Include="Admin\Order\OrderControl.ascx" />
-    <Content Include="Admin\Product\ProductControl.ascx" />
-    <Content Include="Admin\User\UserControl.ascx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -123,12 +116,17 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="Content\Styles\Admin.css" />
-    <Content Include="Display\DisplayControl.ascx" />
+    <Content Include="Content\Styles\Admin\Admin.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Administrator.aspx" />
-    <Content Include="Images\Category\tai-hinh-anh-cay-xanh-moi-nhat.jpg" />
+    <Content Include="Images\Category\DefaultCategoryImg.png" />
+    <Content Include="Pages\AdminPage\AdminPage.aspx" />
+    <Content Include="Pages\AdminPage\AdminPageControl.ascx" />
+    <Content Include="Pages\AdminPage\CategoryManager\CategoryControl.ascx" />
+    <Content Include="Pages\AdminPage\CustomerManager\CustomerControl.ascx" />
+    <Content Include="Pages\AdminPage\OrderManager\OrderControl.ascx" />
+    <Content Include="Pages\AdminPage\ProductManager\ProductControl.ascx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -189,67 +187,10 @@
     <Content Include="Bundle.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin\AdminControl.ascx.cs">
-      <DependentUpon>AdminControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\AdminControl.ascx.designer.cs">
-      <DependentUpon>AdminControl.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Category\CategoryControl.ascx.cs">
-      <DependentUpon>CategoryControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Category\CategoryControl.ascx.designer.cs">
-      <DependentUpon>CategoryControl.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Login.ascx.cs">
-      <DependentUpon>Login.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Login.ascx.designer.cs">
-      <DependentUpon>Login.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Menu.ascx.cs">
-      <DependentUpon>Menu.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Menu.ascx.designer.cs">
-      <DependentUpon>Menu.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Order\OrderControl.ascx.cs">
-      <DependentUpon>OrderControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Order\OrderControl.ascx.designer.cs">
-      <DependentUpon>OrderControl.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Product\ProductControl.ascx.cs">
-      <DependentUpon>ProductControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Product\ProductControl.ascx.designer.cs">
-      <DependentUpon>ProductControl.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\User\UserControl.ascx.cs">
-      <DependentUpon>UserControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\User\UserControl.ascx.designer.cs">
-      <DependentUpon>UserControl.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="App_Code\clsCategory.cs" />
-    <Compile Include="App_Code\clsProduct.cs" />
-    <Compile Include="App_Code\clsUser.cs" />
+    <Compile Include="App_Code\Category\Category.cs" />
+    <Compile Include="App_Code\Category\CategoryDAO.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Display\DisplayControl.ascx.cs">
-      <DependentUpon>DisplayControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Display\DisplayControl.ascx.designer.cs">
-      <DependentUpon>DisplayControl.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -259,6 +200,48 @@
     </Compile>
     <Compile Include="Administrator.aspx.designer.cs">
       <DependentUpon>Administrator.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AdminPage\AdminPage.aspx.cs">
+      <DependentUpon>AdminPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\AdminPage\AdminPage.aspx.designer.cs">
+      <DependentUpon>AdminPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AdminPage\AdminPageControl.ascx.cs">
+      <DependentUpon>AdminPageControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\AdminPage\AdminPageControl.ascx.designer.cs">
+      <DependentUpon>AdminPageControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AdminPage\CategoryManager\CategoryControl.ascx.cs">
+      <DependentUpon>CategoryControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\AdminPage\CategoryManager\CategoryControl.ascx.designer.cs">
+      <DependentUpon>CategoryControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AdminPage\CustomerManager\CustomerControl.ascx.cs">
+      <DependentUpon>CustomerControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\AdminPage\CustomerManager\CustomerControl.ascx.designer.cs">
+      <DependentUpon>CustomerControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AdminPage\OrderManager\OrderControl.ascx.cs">
+      <DependentUpon>OrderControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\AdminPage\OrderManager\OrderControl.ascx.designer.cs">
+      <DependentUpon>OrderControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AdminPage\ProductManager\ProductControl.ascx.cs">
+      <DependentUpon>ProductControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\AdminPage\ProductManager\ProductControl.ascx.designer.cs">
+      <DependentUpon>ProductControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
@@ -273,6 +256,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Images\Product\" />
     <Folder Include="MasterPages\" />
+    <Folder Include="Pages\WebPage\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

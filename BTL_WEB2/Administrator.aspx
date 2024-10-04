@@ -13,7 +13,8 @@
             <h1>TRANG QUẢN TRỊ</h1>
         </div>
         <div>
-            <asp:PlaceHolder ID="plLoad" runat="server"></asp:PlaceHolder>
+            <asp:PlaceHolder ID="plLoad" runat="server">
+            </asp:PlaceHolder>
         </div>
     </form>
 </body>
