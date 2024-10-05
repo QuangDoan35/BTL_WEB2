@@ -117,18 +117,35 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\Styles\Admin\Admin.css" />
-    <Content Include="Content\Styles\WebPage\WebPage.css" />
+    <Content Include="Content\Styles\WebPage\DefaultPage.css" />
+    <Content Include="Content\Styles\WebPage\WebPageTheme.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Images\Carousel\carousel-1.jpg" />
+    <Content Include="Images\Carousel\carousel-2.jpg" />
+    <Content Include="Images\Carousel\carousel-3.jpg" />
+    <Content Include="Images\Carousel\carousel-4.jpg" />
+    <Content Include="Images\Carousel\carousel-5.jpg" />
+    <Content Include="Images\Carousel\carousel-6.jpg" />
     <Content Include="Images\Category\DefaultCategoryImg.png" />
     <Content Include="Images\Category\header-decor.png" />
+    <Content Include="Images\logo.png" />
     <Content Include="Pages\AdminPage\AdminPage.aspx" />
     <Content Include="Pages\AdminPage\AdminPageControl.ascx" />
     <Content Include="Pages\AdminPage\CategoryManager\CategoryControl.ascx" />
     <Content Include="Pages\AdminPage\CustomerManager\CustomerControl.ascx" />
     <Content Include="Pages\AdminPage\OrderManager\OrderControl.ascx" />
     <Content Include="Pages\AdminPage\ProductManager\ProductControl.ascx" />
+    <Content Include="Pages\WebPage\Account.aspx" />
+    <Content Include="Pages\WebPage\BanChay.aspx" />
+    <Content Include="Pages\WebPage\CayAnQua.aspx" />
+    <Content Include="Pages\WebPage\CayCanh.aspx" />
     <Content Include="Pages\WebPage\Default.aspx" />
+    <Content Include="Pages\WebPage\GioHang.aspx" />
+    <Content Include="Pages\WebPage\HatGiong.aspx" />
+    <Content Include="Pages\WebPage\Search.aspx" />
+    <Content Include="Pages\WebPage\SenDa.aspx" />
+    <Content Include="Pages\WebPage\SieuSALE.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -185,6 +202,7 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="Scripts\WebPage\WebPage.js" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -246,12 +264,75 @@
     <Compile Include="Pages\AdminPage\ProductManager\ProductControl.ascx.designer.cs">
       <DependentUpon>ProductControl.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\WebPage\Account.aspx.cs">
+      <DependentUpon>Account.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\WebPage\Account.aspx.designer.cs">
+      <DependentUpon>Account.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WebPage\BanChay.aspx.cs">
+      <DependentUpon>BanChay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\WebPage\BanChay.aspx.designer.cs">
+      <DependentUpon>BanChay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WebPage\CayAnQua.aspx.cs">
+      <DependentUpon>CayAnQua.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\WebPage\CayAnQua.aspx.designer.cs">
+      <DependentUpon>CayAnQua.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WebPage\CayCanh.aspx.cs">
+      <DependentUpon>CayCanh.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\WebPage\CayCanh.aspx.designer.cs">
+      <DependentUpon>CayCanh.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\WebPage\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Pages\WebPage\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WebPage\GioHang.aspx.cs">
+      <DependentUpon>GioHang.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\WebPage\GioHang.aspx.designer.cs">
+      <DependentUpon>GioHang.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WebPage\HatGiong.aspx.cs">
+      <DependentUpon>HatGiong.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\WebPage\HatGiong.aspx.designer.cs">
+      <DependentUpon>HatGiong.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WebPage\Search.aspx.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\WebPage\Search.aspx.designer.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WebPage\SenDa.aspx.cs">
+      <DependentUpon>SenDa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\WebPage\SenDa.aspx.designer.cs">
+      <DependentUpon>SenDa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WebPage\SieuSALE.aspx.cs">
+      <DependentUpon>SieuSALE.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\WebPage\SieuSALE.aspx.designer.cs">
+      <DependentUpon>SieuSALE.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
