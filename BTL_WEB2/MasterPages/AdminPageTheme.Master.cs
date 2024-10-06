@@ -8,10 +8,10 @@ namespace BTL_WEB2.MasterPages
         {
             if (!IsPostBack)
             {
-                DanhMucLink.NavigateUrl = "../Pages/AdminPage/WebForm1.aspx";
+                DanhMucLink.NavigateUrl = "../Pages/AdminPage/CategoryManager.aspx";
                 NguoiDungLink.NavigateUrl = "";
                 DonDatHangLink.NavigateUrl = "";
-                SanPhamLink.NavigateUrl = "";
+                SanPhamLink.NavigateUrl = "../Pages/AdminPage/ProductManager.aspx";
             }
         }
     }

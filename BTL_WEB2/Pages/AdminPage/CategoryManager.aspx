@@ -1,4 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/AdminPageTheme.Master" AutoEventWireup="true" CodeBehind="CategoryManager.aspx.cs" Inherits="BTL_WEB2.Pages.AdminPage.CategoryManager" %>
+
+<asp:Content ContentPlaceHolderID="head" runat="server">
+    <title>Danh mục sản phẩm</title>
+</asp:Content>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="wrapper-content">
     <div class="main-content">

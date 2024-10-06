@@ -6,6 +6,7 @@
 <head runat="server">
     <title>Trang Quản Trị</title>
     <link rel="stylesheet" href="../Content/Styles/Admin/Admin.css" />
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
 </head>
 <body>
     <form runat="server">
@@ -15,7 +16,9 @@
                 <asp:HyperLink ID="gotoWebLink" runat="server" NavigateUrl="~/Pages/WebPage/Default.aspx">Quay về trang WEB</asp:HyperLink>
             </div>
             <div class="nav-bar">
-                <div>logo</div>
+                <div>
+                    <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/logo.png" Width="150px"/>
+                </div>
                 <div class="menu">
                     <ul>
                         <li>
@@ -38,8 +41,6 @@
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
-        <footer>
-        </footer>
     </form>
 </body>
 </html>
