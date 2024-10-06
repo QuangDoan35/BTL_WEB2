@@ -13,7 +13,7 @@
     <asp:ContentPlaceHolder runat="server" ID="plHead"></asp:ContentPlaceHolder>
 </head>
 
-<body>
+<body style="display: flex; flex-direction: column;">
     <header>
         <div class="top-bar">
             <div>Mừng qua môn, Siêu sale toàn bộ,</div>
@@ -90,7 +90,9 @@
     </a>
 
     <div class="content">
-        <asp:ContentPlaceHolder runat="server" ID="ContentWebPage"></asp:ContentPlaceHolder>
+        <form runat="server">
+            <asp:ContentPlaceHolder runat="server" ID="ContentWebPage"></asp:ContentPlaceHolder>
+        </form>
     </div>
 
     <footer>
