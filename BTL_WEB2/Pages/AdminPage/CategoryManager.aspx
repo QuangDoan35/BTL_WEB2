@@ -62,6 +62,9 @@
                 <asp:Button runat="server" Text="Thêm mới danh mục" Width="100%" BackColor="#06D6A0" BorderColor="White" BorderStyle="None" ForeColor="White" Height="40px" OnClick="SaveAddButton_Click" />
             </asp:View>
 
+       
+
+
             <asp:View ID="EditView" runat="server">
                 <div class="container">
                     <asp:Label ID="Label1" runat="server" Text="" CssClass="error"></asp:Label>
