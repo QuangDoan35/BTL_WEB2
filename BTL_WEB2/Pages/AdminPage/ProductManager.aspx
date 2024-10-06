@@ -5,4 +5,5 @@
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    đây là trang sản phẩm
 </asp:Content>
