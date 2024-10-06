@@ -117,7 +117,6 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\Styles\Admin\Admin.css" />
-    <Content Include="Content\Styles\WebPage\DefaultPage.css" />
     <Content Include="Content\Styles\WebPage\WebPageTheme.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -130,6 +129,7 @@
     <Content Include="Images\Category\DefaultCategoryImg.png" />
     <Content Include="Images\Category\header-decor.png" />
     <Content Include="Images\logo.png" />
+    <Content Include="Images\Product\carousel-4.jpg" />
     <Content Include="Pages\AdminPage\ProductManager.aspx" />
     <Content Include="Pages\AdminPage\CategoryManager.aspx" />
     <Content Include="Pages\WebPage\Account.aspx" />
@@ -207,8 +207,17 @@
   <ItemGroup>
     <Compile Include="App_Code\Category\Category.cs" />
     <Compile Include="App_Code\Category\CategoryDAO.cs" />
+    <Compile Include="App_Code\Product\Product.cs" />
+    <Compile Include="App_Code\Product\ProductDAO.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="df.aspx.cs">
+      <DependentUpon>df.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="df.aspx.designer.cs">
+      <DependentUpon>df.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -321,7 +330,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Images\Product\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

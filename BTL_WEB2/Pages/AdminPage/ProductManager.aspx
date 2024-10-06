@@ -9,7 +9,7 @@
         <div class="main-content">
             <div class="title-btnAdd">
                 <asp:Label ID="title" runat="server" Text="Quản lý sản phẩm"></asp:Label>
-                <asp:Button CssClass="btnStyle" ID="btnAdd" runat="server" Text="Tạo danh mục mới" OnClick="AddButton_Onclick" />
+                <asp:Button CssClass="btnStyle" ID="btnAdd" runat="server" Text="Tạo sản phẩm mới" OnClick="AddButton_Onclick" />
             </div>
             <asp:MultiView runat="server" ID="ProductView" ActiveViewIndex="0">
                 <asp:View runat="server" ID="ViewProductList">
