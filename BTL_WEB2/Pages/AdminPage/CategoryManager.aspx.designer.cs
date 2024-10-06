@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BTL_WEB2.Pages.AdminPage.CategoryManager
+namespace BTL_WEB2.Pages.AdminPage
 {
 
 
-    public partial class CategoryControl
+    public partial class CategoryManager
     {
 
         /// <summary>

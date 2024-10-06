@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BTL_WEB2.Pages.AdminPage.Product
+namespace BTL_WEB2.Pages.AdminPage
 {
 
 
-    public partial class ProductControl
+    public partial class ProductManager
     {
     }
 }

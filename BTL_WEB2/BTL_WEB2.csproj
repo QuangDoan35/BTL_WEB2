@@ -130,12 +130,10 @@
     <Content Include="Images\Category\DefaultCategoryImg.png" />
     <Content Include="Images\Category\header-decor.png" />
     <Content Include="Images\logo.png" />
-    <Content Include="Pages\AdminPage\AdminPage.aspx" />
-    <Content Include="Pages\AdminPage\AdminPageControl.ascx" />
-    <Content Include="Pages\AdminPage\CategoryManager\CategoryControl.ascx" />
     <Content Include="Pages\AdminPage\CustomerManager\CustomerControl.ascx" />
     <Content Include="Pages\AdminPage\OrderManager\OrderControl.ascx" />
-    <Content Include="Pages\AdminPage\ProductManager\ProductControl.ascx" />
+    <Content Include="Pages\AdminPage\ProductManager.aspx" />
+    <Content Include="Pages\AdminPage\CategoryManager.aspx" />
     <Content Include="Pages\WebPage\Account.aspx" />
     <Content Include="Pages\WebPage\BanChay.aspx" />
     <Content Include="Pages\WebPage\CayAnQua.aspx" />
@@ -175,6 +173,7 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="MasterPages\WebPageTheme.Master" />
+    <Content Include="MasterPages\AdminPageTheme.Master" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -215,33 +214,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="MasterPages\AdminPageTheme.Master.cs">
+      <DependentUpon>AdminPageTheme.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\AdminPageTheme.Master.designer.cs">
+      <DependentUpon>AdminPageTheme.Master</DependentUpon>
+    </Compile>
     <Compile Include="MasterPages\WebPageTheme.Master.cs">
       <DependentUpon>WebPageTheme.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="MasterPages\WebPageTheme.Master.designer.cs">
       <DependentUpon>WebPageTheme.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\AdminPage\AdminPage.aspx.cs">
-      <DependentUpon>AdminPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\AdminPage\AdminPage.aspx.designer.cs">
-      <DependentUpon>AdminPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\AdminPage\AdminPageControl.ascx.cs">
-      <DependentUpon>AdminPageControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\AdminPage\AdminPageControl.ascx.designer.cs">
-      <DependentUpon>AdminPageControl.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\AdminPage\CategoryManager\CategoryControl.ascx.cs">
-      <DependentUpon>CategoryControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\AdminPage\CategoryManager\CategoryControl.ascx.designer.cs">
-      <DependentUpon>CategoryControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="Pages\AdminPage\CustomerManager\CustomerControl.ascx.cs">
       <DependentUpon>CustomerControl.ascx</DependentUpon>
@@ -257,12 +242,19 @@
     <Compile Include="Pages\AdminPage\OrderManager\OrderControl.ascx.designer.cs">
       <DependentUpon>OrderControl.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\AdminPage\ProductManager\ProductControl.ascx.cs">
-      <DependentUpon>ProductControl.ascx</DependentUpon>
+    <Compile Include="Pages\AdminPage\ProductManager.aspx.cs">
+      <DependentUpon>ProductManager.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\AdminPage\ProductManager\ProductControl.ascx.designer.cs">
-      <DependentUpon>ProductControl.ascx</DependentUpon>
+    <Compile Include="Pages\AdminPage\ProductManager.aspx.designer.cs">
+      <DependentUpon>ProductManager.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AdminPage\CategoryManager.aspx.cs">
+      <DependentUpon>CategoryManager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\AdminPage\CategoryManager.aspx.designer.cs">
+      <DependentUpon>CategoryManager.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\WebPage\Account.aspx.cs">
       <DependentUpon>Account.aspx</DependentUpon>

@@ -1,7 +1,6 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="CategoryControl.ascx.cs" Inherits="BTL_WEB2.Pages.AdminPage.CategoryManager.CategoryControl" %>
-<style type="text/css">
-</style>
-<div class="wrapper-content">
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/AdminPageTheme.Master" AutoEventWireup="true" CodeBehind="CategoryManager.aspx.cs" Inherits="BTL_WEB2.Pages.AdminPage.CategoryManager" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class="wrapper-content">
     <div class="main-content">
         <div class="title-btnAdd">
             <asp:Label ID="title" runat="server" Text="Quản lý danh mục"></asp:Label>
@@ -99,4 +98,4 @@
         </asp:MultiView>
     </div>
 </div>
-
+</asp:Content>

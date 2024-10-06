@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Web.UI.WebControls;
 
-namespace BTL_WEB2.Pages.AdminPage.CategoryManager
+namespace BTL_WEB2.Pages.AdminPage
 {
-    public partial class CategoryControl : System.Web.UI.UserControl
+    public partial class CategoryManager : System.Web.UI.Page
     {
         CategoryDAO categoryDAO = new CategoryDAO();
 
@@ -22,11 +22,6 @@ namespace BTL_WEB2.Pages.AdminPage.CategoryManager
                 ViewState["btnChangeStatus"] = null;
             }
             LoadCategoryTable();
-
-            //Xóa đi thông tin cũ
-            txbMaDanhMuc.Text = string.Empty;
-            txbTenDanhMuc.Text = string.Empty;
-            txbMoTaDanhMuc.Text = string.Empty;
         }
 
         //Hiển thị danh sách danh mục
@@ -124,6 +119,12 @@ namespace BTL_WEB2.Pages.AdminPage.CategoryManager
                 lblError.Text = "";
                 ViewState["isSave"] = false;
                 ViewState["imageFileName"] = string.Empty;
+
+
+                //Xóa đi thông tin cũ
+                txbMaDanhMuc.Text = string.Empty;
+                txbTenDanhMuc.Text = string.Empty;
+                txbMoTaDanhMuc.Text = string.Empty;
             }
             //Quay trờ lại
             else if (countClick == 1)
@@ -190,9 +191,9 @@ namespace BTL_WEB2.Pages.AdminPage.CategoryManager
         // Lưu thông tin thêm danh mục người dùng nhập vào
         protected void SaveAddButton_Click(object sender, EventArgs e)
         {
-            string ma = txbMaDanhMuc.Text;
-            string ten = txbTenDanhMuc.Text;
-            string mota = txbMoTaDanhMuc.Text;
+            string ma = txbMaDanhMuc.Text.Trim();
+            string ten = txbTenDanhMuc.Text.Trim();
+            string mota = txbMoTaDanhMuc.Text.Trim();
 
             // Lấy tên ảnh từ ViewState
             string fileName = ViewState["imageFileName"]?.ToString() ?? string.Empty;
@@ -288,7 +289,7 @@ namespace BTL_WEB2.Pages.AdminPage.CategoryManager
                 }
 
                 ViewState["currentCategoryId"] = maDanhMuc; // Lưu lại mã danh mục để sử dụng khi cập nhật
-                // Chuyển sang view chỉnh sửa
+                                                            // Chuyển sang view chỉnh sửa
                 categoryView.ActiveViewIndex = 2;
                 title.Text = "Chỉnh sửa danh mục";
                 btnAdd.Text = "Quay lại";
@@ -335,7 +336,7 @@ namespace BTL_WEB2.Pages.AdminPage.CategoryManager
         }
 
 
-        //Xóa danh mục
+        //Thay đổi trạng thái của danh mục
         protected void ChangeStatusCategory_Click(object sender, EventArgs e)
         {
             string maDanhMuc = txtEditMaDanhMuc.Text;

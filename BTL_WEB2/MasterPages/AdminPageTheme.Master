@@ -1,0 +1,45 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AdminPageTheme.master.cs" Inherits="BTL_WEB2.MasterPages.AdminPageTheme" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Trang Quản Trị</title>
+    <link rel="stylesheet" href="../Content/Styles/Admin/Admin.css" />
+</head>
+<body>
+    <form runat="server">
+        <header>
+            <div style="height: 100px; padding: 10px 50px; display: flex; justify-content: space-between; align-items: center; color: white; background-color: #5bc0be;">
+                <h2>Trang quản trị</h2>
+                <asp:HyperLink ID="gotoWebLink" runat="server" NavigateUrl="~/Pages/WebPage/Default.aspx">Quay về trang WEB</asp:HyperLink>
+            </div>
+            <div class="nav-bar">
+                <div>logo</div>
+                <div class="menu">
+                    <ul>
+                        <li>
+                            <asp:HyperLink ID="DanhMucLink" runat="server">Danh Mục</asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="NguoiDungLink" runat="server">Người dùng</asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="DonDatHangLink" runat="server">Đơn đặt hàng</asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="SanPhamLink" runat="server">Sản phẩm</asp:HyperLink>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <div class="content">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <footer>
+        </footer>
+    </form>
+</body>
+</html>
