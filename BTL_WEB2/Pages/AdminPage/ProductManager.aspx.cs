@@ -1,11 +1,6 @@
-﻿using BTL_WEB2.App_Code.Category;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 using System.Web.Configuration;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace BTL_WEB2.Pages.AdminPage
@@ -16,8 +11,9 @@ namespace BTL_WEB2.Pages.AdminPage
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack) {
-                
+            if (!IsPostBack)
+            {
+
             }
 
             LoadProductTable();
@@ -29,7 +25,7 @@ namespace BTL_WEB2.Pages.AdminPage
             {
                 connection.Open();
 
-                string str = "SELECT * FROM product";
+                string str = "SELECT * FROM Product";
                 SqlCommand cmd = new SqlCommand(str, connection);
                 SqlDataReader data = cmd.ExecuteReader();
 
@@ -112,7 +108,7 @@ namespace BTL_WEB2.Pages.AdminPage
         }
 
         //Nút chỉnh sửa sản phẩm
-        protected void EditButton_Click (object sender, EventArgs e)
+        protected void EditButton_Click(object sender, EventArgs e)
         {
             ProductView.ActiveViewIndex = 2;
         }
