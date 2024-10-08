@@ -177,13 +177,13 @@ namespace BTL_WEB2.Pages.AdminPage
         protected global::System.Web.UI.WebControls.View editProduct;
 
         /// <summary>
-        /// Label1 control.
+        /// lb_errorEdit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label lb_errorEdit;
 
         /// <summary>
         /// txtEditMaSanPham control.
@@ -258,13 +258,13 @@ namespace BTL_WEB2.Pages.AdminPage
         protected global::System.Web.UI.WebControls.FileUpload fileEditAnhSanPham;
 
         /// <summary>
-        /// Image2 control.
+        /// ImageEdit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image2;
+        protected global::System.Web.UI.WebControls.Image ImageEdit;
 
         /// <summary>
         /// btnDeleteProduct control.

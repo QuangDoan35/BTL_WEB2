@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
+using System.IO;
 using System.Web.Configuration;
 using System.Web.UI.WebControls;
 using WebGrease.Activities;
@@ -14,7 +15,7 @@ namespace BTL_WEB2.Pages.AdminPage
         {
             if (!IsPostBack)
             {
-
+                LoadDanhMuc();
             }
 
             LoadProductTable();
@@ -61,7 +62,7 @@ namespace BTL_WEB2.Pages.AdminPage
                 while (data.Read())
                 {
                     TableCell stt = new TableCell() { Text = j.ToString() };
-                    TableCell ma = new TableCell() { Text = data[0].ToString() }; // Sử dụng tên cột thay vì chỉ số
+                    TableCell ma = new TableCell() { Text = data[0].ToString() };
                     TableCell ten = new TableCell() { Text = data[1].ToString() };
                     TableCell gia = new TableCell() { Text = data[2].ToString() };
                     TableCell mota = new TableCell() { Text = data[3].ToString() };
@@ -107,7 +108,6 @@ namespace BTL_WEB2.Pages.AdminPage
             }
         }
 
-
         //Them san pham moi
         protected void AddButton_Onclick(object sender, EventArgs e)
         {
@@ -135,108 +135,126 @@ namespace BTL_WEB2.Pages.AdminPage
         {
             string filePath = null;
 
+            // Kiểm tra các trường đầu vào có rỗng không
             if (string.IsNullOrEmpty(txbMaSanPham.Text) ||
                 string.IsNullOrEmpty(txbTenSanPham.Text) ||
                 string.IsNullOrEmpty(txbMoTaSanPham.Text) ||
                 string.IsNullOrEmpty(txbSLTK.Text) ||
-                string.IsNullOrEmpty(txbMoTaSanPham.Text) ||
                 string.IsNullOrEmpty(txbGiamGiaSanPham.Text) ||
-                    string.IsNullOrEmpty(txbSoLuongDaBan.Text))
+                string.IsNullOrEmpty(txbSoLuongDaBan.Text))
             {
                 lblError.Text = "Không được để trống một trong các ô";
+                return; // Thoát khỏi hàm nếu có trường rỗng
             }
-            else
+
+            string filename = "";
+            if (fileAnhSanPham.HasFile)
             {
-                string filename = "";
-                if (fileAnhSanPham.HasFile)
+                filename = fileAnhSanPham.FileName;
+                filePath = Path.Combine(Server.MapPath("~/Images/Product/"), filename);
+
+                // Kiểm tra xem thư mục đã tồn tại chưa
+                string directoryPath = Server.MapPath("~/Images/Product/");
+                if (!Directory.Exists(directoryPath))
                 {
-                    filename = fileAnhSanPham.FileName;
-                    filePath = Path.Combine(Server.MapPath("~/Images/Product/"), filename);
-
-                    // Kiểm tra xem thư mục đã tồn tại chưa
-                    string directoryPath = Server.MapPath("~/Images/Product/");
-                    if (!Directory.Exists(directoryPath))
-                    {
-                        Directory.CreateDirectory(directoryPath); // Tạo thư mục nếu chưa tồn tại
-                    }
-
-                    fileAnhSanPham.SaveAs(filePath);
+                    Directory.CreateDirectory(directoryPath); // Tạo thư mục nếu chưa tồn tại
                 }
 
-                // Kết nối tới cơ sở dữ liệu và thực hiện lưu thông tin sản phẩm
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                fileAnhSanPham.SaveAs(filePath);
+            }
+
+            // Kết nối tới cơ sở dữ liệu và thực hiện lưu thông tin sản phẩm
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("spud_addProduct", conn))
                 {
-                    using (SqlCommand cmd = new SqlCommand("spud_addProduct", conn))
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@maSanPham", txbMaSanPham.Text);
+                    cmd.Parameters.AddWithValue("@tenSanPham", txbTenSanPham.Text);
+                    cmd.Parameters.AddWithValue("@giaSanPham", txbGiaSanPham.Text);
+                    cmd.Parameters.AddWithValue("@moTaSanPham", txbMoTaSanPham.Text);
+                    cmd.Parameters.AddWithValue("@soLuongTonKho", txbSLTK.Text);
+                    cmd.Parameters.AddWithValue("@anhSanPham", "~/Images/Product/" + filename);
+                    cmd.Parameters.AddWithValue("@maDanhMuc", ddl_danhmuc.SelectedValue);
+                    cmd.Parameters.AddWithValue("@giamGia", txbGiamGiaSanPham.Text);
+                    cmd.Parameters.AddWithValue("@SoLuongDaBan", txbSoLuongDaBan.Text);
+
+                    try
                     {
                         conn.Open();
-                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
-
-                        cmd.Parameters.AddWithValue("@maSanPham", txbMaSanPham.Text);
-                        cmd.Parameters.AddWithValue("@tenSanPham", txbTenSanPham.Text);
-                        cmd.Parameters.AddWithValue("@giaSanPham", txbGiaSanPham.Text);
-                        cmd.Parameters.AddWithValue("@moTaSanPham", txbMoTaSanPham.Text);
-                        cmd.Parameters.AddWithValue("@soLuongTonKho", txbSLTK.Text);
-                        cmd.Parameters.AddWithValue("@anhSanPham", "~/Images/Product/" + filename);
-                        cmd.Parameters.AddWithValue("@maDanhMuc", ddl_danhmuc.SelectedValue);
-                        cmd.Parameters.AddWithValue("@giamGia", txbGiamGiaSanPham.Text);
-                        cmd.Parameters.AddWithValue("@SoLuongDaBan", txbSoLuongDaBan.Text);
-
-                        cmd.ExecuteNonQuery();
-                        conn.Close();
-
-                        lblError.Text = "Them thanh cong ròi nhe";
+                        cmd.ExecuteNonQuery(); // Thực hiện lệnh
+                        lblError.Text = "Thêm sản phẩm thành công."; // Hiển thị thông báo thành công
+                    }
+                    catch (SqlException ex)
+                    {
+                        if (ex.Number == 50000) 
+                        {
+                            lblError.Text = ex.Message; 
+                            lblError.ForeColor = System.Drawing.Color.Red;
+                        }
+                        else
+                        {
+                            lblError.Text = "Đã xảy ra lỗi khi thêm sản phẩm. Vui lòng thử lại.";
+                        }
                     }
                 }
             }
         }
 
-        //Nút chỉnh sửa sản phẩm
+
+
+
         protected void EditButton_Click(object sender, EventArgs e)
         {
-            // Load dữ liệu hiển thị khi chỉnh sửa sản phẩm 
             ProductView.ActiveViewIndex = 2;
+
+            if (ProductView.ActiveViewIndex == 0)
+            {
+                title.Text = "Thêm mới sản phẩm";
+                btnAdd.Text = "Quay lại";
+            }
+            else
+            {
+                title.Text = "Chỉnh sửa";
+                btnAdd.Text = "Quay lại";
+            }
+
             using (SqlConnection connect = new SqlConnection(connectionString))
             {
                 connect.Open();
                 LinkButton editButton = (LinkButton)sender;
                 string masanpham = editButton.CommandArgument;
 
-                string sql = "SELECT * FROM Product WHERE MaSanPham ='" + masanpham + "'"; // Sử dụng tham số
+                string sql = "SELECT * FROM Product WHERE MaSanPham = @masanpham";
                 SqlCommand cmd = new SqlCommand(sql, connect);
-                cmd.Parameters.AddWithValue("@masanpham", masanpham); // Thêm tham số
+                cmd.Parameters.AddWithValue("@masanpham", masanpham);
 
                 using (SqlDataReader data = cmd.ExecuteReader())
                 {
                     if (data.Read())
                     {
-                        txtEditMaSanPham.Text = data["MaSanPham"].ToString(); // Sử dụng tên cột
+                        // Nạp dữ liệu vào các trường chỉnh sửa
+                        txtEditMaSanPham.Text = data["MaSanPham"].ToString();
                         txtEditTenSanPham.Text = data["TenSanPham"].ToString();
                         txtEditGiaSanPham.Text = data["GiaSanPham"].ToString();
                         txtEditMoTaSanPham.Text = data["MoTaSanPham"].ToString();
                         txtEditSLTK.Text = data["SoLuongTonKho"].ToString();
                         txtEditGiamGiaSanPham.Text = data["GiamGia"].ToString();
                         txtEditSoLuongDaBan.Text = data["SoLuongDaBan"].ToString();
+
+                        // Hiển thị ảnh từ cơ sở dữ liệu
+                        ImageEdit.ImageUrl = data["AnhSanPham"].ToString();
                     }
                     else
                     {
-                        // Xử lý khi không tìm thấy sản phẩm
-                        lblError.Text = "Sản phẩm không tồn tại.";
+                        lb_errorEdit.Text = "Sản phẩm không tồn tại.";
                     }
                 }
             }
         }
 
-        protected void btnDeleteProduct_Click(object sender, EventArgs e)
-        {
-            string connectString = WebConfigurationManager.ConnectionStrings["DataBase_QLBanCay"].ConnectionString;
-            SqlConnection sqlConnection = new SqlConnection(connectString);
-            sqlConnection.Open();
 
-            SqlCommand cmd = new SqlCommand("spud_deleteProduct", sqlConnection);
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("maSanPham", Request.QueryString["masanpham"]);
-            cmd.ExecuteNonQuery();
-        }
 
 
 
@@ -253,7 +271,6 @@ namespace BTL_WEB2.Pages.AdminPage
                 fileEditAnhSanPham.SaveAs(Server.MapPath(filePath)); // Lưu ảnh vào server
             }
 
-
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 using (SqlCommand cmd = new SqlCommand("spud_updateProduct", conn))
@@ -264,10 +281,20 @@ namespace BTL_WEB2.Pages.AdminPage
                     // Truyền các tham số vào stored procedure
                     cmd.Parameters.AddWithValue("@maSanPham", txtEditMaSanPham.Text);
                     cmd.Parameters.AddWithValue("@tenSanPham", txtEditTenSanPham.Text);
-                    cmd.Parameters.AddWithValue("@giaSanPham", Convert.ToDecimal(txtEditGiaSanPham.Text)); // Chuyển đổi về MONEY
+                    cmd.Parameters.AddWithValue("@giaSanPham", Convert.ToDecimal(txtEditGiaSanPham.Text));
                     cmd.Parameters.AddWithValue("@moTaSanPham", txtEditMoTaSanPham.Text);
-                    cmd.Parameters.AddWithValue("@soLuongTonKho", Convert.ToInt32(txtEditSLTK.Text)); // Chuyển đổi về INT
-                    cmd.Parameters.AddWithValue("@anhSanPham", "~/Images/Product/"+filePath ?? string.Empty); // Nếu không có tệp mới thì dùng string.Empty
+                    cmd.Parameters.AddWithValue("@soLuongTonKho", Convert.ToInt32(txtEditSLTK.Text));
+
+                    // Chỉ cập nhật ảnh nếu có file mới
+                    if (!string.IsNullOrEmpty(filePath))
+                    {
+                        cmd.Parameters.AddWithValue("@anhSanPham", filePath); // Đường dẫn mới
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@anhSanPham", ImageEdit.ImageUrl); // Giữ lại ảnh cũ
+                    }
+
                     cmd.Parameters.AddWithValue("@giamGia", txtEditGiamGiaSanPham.Text);
                     cmd.Parameters.AddWithValue("@SoLuongDaBan", txtEditSoLuongDaBan.Text);
 
@@ -276,7 +303,11 @@ namespace BTL_WEB2.Pages.AdminPage
                         cmd.ExecuteNonQuery();
                         lblError.Text = "Cập nhật thành công!";
 
-                        // Ẩn hình ảnh nếu cần thiết
+                        // Cập nhật ảnh sau khi lưu
+                        ImageEdit.ImageUrl = filePath ?? ImageEdit.ImageUrl; // Hiển thị ảnh mới nếu có, ngược lại giữ ảnh cũ
+
+                        // Tải lại dữ liệu
+                        LoadProductTable(); // Gọi lại phương thức này để refresh bảng
                     }
                     catch (SqlException ex)
                     {
@@ -284,6 +315,19 @@ namespace BTL_WEB2.Pages.AdminPage
                     }
                 }
             }
+        }
+
+
+        protected void btnDeleteProduct_Click(object sender, EventArgs e)
+        {
+            string connectString = WebConfigurationManager.ConnectionStrings["DataBase_QLBanCay"].ConnectionString;
+            SqlConnection sqlConnection = new SqlConnection(connectString);
+            sqlConnection.Open();
+
+            SqlCommand cmd = new SqlCommand("spud_deleteProduct", sqlConnection);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("maSanPham", Request.QueryString["masanpham"]);
+            cmd.ExecuteNonQuery();
         }
 
         protected void RemoveOldInfor_Click(object sender, EventArgs e)
