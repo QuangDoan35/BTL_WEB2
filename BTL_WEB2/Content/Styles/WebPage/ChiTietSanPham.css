@@ -1,0 +1,105 @@
+﻿.wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0;
+}
+
+.product-briefing {
+    width: 80%;
+    display: flex;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+
+.left-col {
+    width: 40%;
+    margin-right: 10px;
+}
+
+.image-product {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+
+.share {
+    display: flex;
+    align-items: center;
+}
+
+.share i {
+    color: grey;
+    padding: 10px;
+    font-size: 18px;
+}
+
+.share i:hover {
+    color: dodgerblue;
+}
+
+.heart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.right-col {
+    width: 60%;
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-detail {
+    display: flex;
+    flex-direction: column;
+}
+
+.sale-panel-decor {
+    background: linear-gradient(90deg, rgba(255,0,74,1) 35%, rgba(255,81,0,0) 100%);
+    padding: 10px 25px;
+    margin-top: 20px;
+}
+
+.lblMoTaSanPham {
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.buy-cart i {
+    position: absolute;
+    color: #09bc8a;
+    top: 10px;
+    left: 20px;
+}
+
+.btn-addtocart {
+    padding: 10px 50px;
+    background-color: #00c49a30;
+    border: 1px solid #09bc8a;
+    color: #09bc8a;
+}
+
+.btn-buy {
+    padding: 10px 100px;
+    background-color: #09bc8a;
+    border: 1px solid #09bc8a;
+    color: white;
+    margin-left: 20px;
+}
+
+.label-giamgia {
+    background-color: black;
+    padding: 5px 20px;
+    color: white;
+    margin-left: 30px;
+}
+
+.label-soluongdaban {
+    margin-top: 20px;
+    color: mediumseagreen;
+}

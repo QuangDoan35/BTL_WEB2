@@ -10,10 +10,11 @@
         private int soLuongTonKho;
         private string maDanhMuc;
         private int giamGia;
+        private int soLuongDaBan;
 
         public Product() { }
 
-        public Product(string maSanPham, string tenSanPham, double giaSanPham, string moTaSanPham, string anhSanPham, int soLuongTonKho, string maDanhMuc, int giamGia)
+        public Product(string maSanPham, string tenSanPham, double giaSanPham, string moTaSanPham, string anhSanPham, int soLuongTonKho, string maDanhMuc, int giamGia, int soLuongDaBan)
         {
             this.maSanPham = maSanPham;
             this.tenSanPham = tenSanPham;
@@ -23,6 +24,7 @@
             this.soLuongTonKho = soLuongTonKho;
             this.maDanhMuc = maDanhMuc;
             this.giamGia = giamGia;
+            this.soLuongDaBan = soLuongDaBan;
         }
 
         public string getMaSanPham() { return maSanPham; }
@@ -33,5 +35,6 @@
         public int getSoLuongTonKho() { return soLuongTonKho; }
         public string getMaDanhMuc() { return maDanhMuc; }
         public int getGiamGia() { return giamGia; }
+        public int getSoLuongDaBan() { return soLuongDaBan; }
     }
 }
