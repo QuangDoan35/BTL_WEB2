@@ -23,6 +23,8 @@
                             <asp:TableCell CssClass="table-header">Ảnh sản phẩm</asp:TableCell>
                             <asp:TableCell CssClass="table-header">Số lượng</asp:TableCell>
                             <asp:TableCell CssClass="table-header">Mã danh mục</asp:TableCell>
+                            <asp:TableCell CssClass="table-header">Giảm giá</asp:TableCell>
+                            <asp:TableCell CssClass="table-header">Số lượng đã bán</asp:TableCell>
                             <asp:TableCell CssClass="table-header">Chỉnh sửa</asp:TableCell>
                         </asp:TableRow>
                     </asp:Table>
@@ -31,7 +33,7 @@
 
                 <asp:View runat="server" ID="addProductView">
                     <div class="container">
-                        <asp:Label ID="lblError" runat="server" Text="" CssClass="error"></asp:Label>
+                        <asp:Label ID="lblError" runat="server" CssClass="error" ForeColor="Lime"></asp:Label>
                         <div class="row">
                             <div class="col">Mã sản phẩm</div>
                             <div class="col">
@@ -68,20 +70,29 @@
                                 <asp:DropDownList ID="ddl_danhmuc" runat="server"></asp:DropDownList>
                             </div>
                         </div>
+                    <div class="row">
+                        <div class="col">Giảm giá sản phẩm</div>
+                        <div class="col">
+                            <asp:TextBox ID="txbGiamGiaSanPham" runat="server"></asp:TextBox>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">Số lượng đã bán</div>
+                        <div class="col">
+                            <asp:TextBox ID="txbSoLuongDaBan" runat="server"></asp:TextBox>
+                        </div>
+                    </div>
                         <div class="row">
                             <div class="col">
                                 <asp:FileUpload ID="fileAnhSanPham" runat="server" />
                             </div>
-                            <div>
-                                <asp:Button runat="server" Text="Xem ảnh" BackColor="#FFD166" BorderStyle="None" ForeColor="White" OnClick="ReviewImageButton_Click" />
-                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <asp:Image ID="Image1" CssClass="review-image" runat="server" ImageAlign="Middle" />
                     </div>
                     <asp:Button runat="server" Text="Thêm mới sản phẩm" Width="100%" BackColor="#06D6A0" BorderColor="White" BorderStyle="None" ForeColor="White" Height="40px" OnClick="SaveAddProductButton_Click" />
                 </asp:View>
+
+                
 
                 <asp:View runat="server" ID="editProduct">
                     <div class="container">
@@ -116,12 +127,19 @@
                                 <asp:TextBox ID="txtEditSLTK" runat="server"></asp:TextBox>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col">Danh mục</div>
-                            <div class="col">
-                                <asp:DropDownList ID="DropDownList1" runat="server"></asp:DropDownList>
-                            </div>
-                        </div>
+                         <div class="row">
+                         <div class="col">Giảm giá sản phẩm</div>
+                         <div class="col">
+                             <asp:TextBox ID="txtEditGiamGiaSanPham" runat="server"></asp:TextBox>
+                         </div>
+                     </div>
+
+                     <div class="row">
+                         <div class="col">Số lượng đã bán</div>
+                         <div class="col">
+                             <asp:TextBox ID="txtEditSoLuongDaBan" runat="server"></asp:TextBox>
+                         </div>
+                     </div>
                         <div class="row">
                             <div class="col">
                                 <asp:FileUpload ID="fileEditAnhSanPham" runat="server" />

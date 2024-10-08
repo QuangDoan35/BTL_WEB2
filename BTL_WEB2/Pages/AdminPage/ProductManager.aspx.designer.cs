@@ -141,6 +141,24 @@ namespace BTL_WEB2.Pages.AdminPage
         protected global::System.Web.UI.WebControls.DropDownList ddl_danhmuc;
 
         /// <summary>
+        /// txbGiamGiaSanPham control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txbGiamGiaSanPham;
+
+        /// <summary>
+        /// txbSoLuongDaBan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txbSoLuongDaBan;
+
+        /// <summary>
         /// fileAnhSanPham control.
         /// </summary>
         /// <remarks>
@@ -148,15 +166,6 @@ namespace BTL_WEB2.Pages.AdminPage
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload fileAnhSanPham;
-
-        /// <summary>
-        /// Image1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image1;
 
         /// <summary>
         /// editProduct control.
@@ -222,13 +231,22 @@ namespace BTL_WEB2.Pages.AdminPage
         protected global::System.Web.UI.WebControls.TextBox txtEditSLTK;
 
         /// <summary>
-        /// DropDownList1 control.
+        /// txtEditGiamGiaSanPham control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.TextBox txtEditGiamGiaSanPham;
+
+        /// <summary>
+        /// txtEditSoLuongDaBan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEditSoLuongDaBan;
 
         /// <summary>
         /// fileEditAnhSanPham control.
