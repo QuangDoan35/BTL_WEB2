@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Data.SqlClient;
+using System.IO;
 using System.Web.Configuration;
 using System.Web.UI.WebControls;
-using WebGrease.Activities;
 
 namespace BTL_WEB2.Pages.AdminPage
 {
@@ -267,7 +267,7 @@ namespace BTL_WEB2.Pages.AdminPage
                     cmd.Parameters.AddWithValue("@giaSanPham", Convert.ToDecimal(txtEditGiaSanPham.Text)); // Chuyển đổi về MONEY
                     cmd.Parameters.AddWithValue("@moTaSanPham", txtEditMoTaSanPham.Text);
                     cmd.Parameters.AddWithValue("@soLuongTonKho", Convert.ToInt32(txtEditSLTK.Text)); // Chuyển đổi về INT
-                    cmd.Parameters.AddWithValue("@anhSanPham", "~/Images/Product/"+filePath ?? string.Empty); // Nếu không có tệp mới thì dùng string.Empty
+                    cmd.Parameters.AddWithValue("@anhSanPham", "~/Images/Product/" + filePath ?? string.Empty); // Nếu không có tệp mới thì dùng string.Empty
                     cmd.Parameters.AddWithValue("@giamGia", txtEditGiamGiaSanPham.Text);
                     cmd.Parameters.AddWithValue("@SoLuongDaBan", txtEditSoLuongDaBan.Text);
 

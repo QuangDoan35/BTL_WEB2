@@ -42,6 +42,14 @@
         </button>
     </div>
 
+    <!--Hiển thị tất cả các danh mục có trong cơ sở dữ liệu-->
+    <div style="padding: 50px 0;">
+        <div style="text-align: center;  margin-bottom: 20px; font-size: 20px; font-weight: 600">Danh Mục</div>
+        <div class="category-row">
+            <asp:PlaceHolder ID="categoryRow" runat="server"></asp:PlaceHolder>
+        </div>
+    </div>
+
     <!--Hiển thị sản phẩm đang sale-->
     <div class="product-row prodcut-row-decor">
         <div class="title-link">
@@ -82,22 +90,22 @@
 
     <!--Hiển thị sản phẩm cây ăn quả-->
     <div class="product-row prodcut-row-decor">
-    <div class="title-link">
-        <div class="title-category flex">
-            CÂY
+        <div class="title-link">
+            <div class="title-category flex">
+                CÂY
             <p style="color: mediumspringgreen; margin-left: 7px;">ĂN QUẢ</p>
-        </div>
-        <asp:HyperLink ID="HyperLink2" runat="server" CssClass="link-xemthem">
+            </div>
+            <asp:HyperLink ID="HyperLink2" runat="server" CssClass="link-xemthem">
             <div class="flex">
                 Xem thêm sản phẩm
                 <i class="bi bi-arrow-right-short"></i>
             </div>
-        </asp:HyperLink>
-    </div>
-    <div style="display: flex; justify-content: space-between; align-items: center; width: 90%;">
+            </asp:HyperLink>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; width: 90%;">
             <asp:PlaceHolder ID="cayAnQuaRow" runat="server"></asp:PlaceHolder>
+        </div>
     </div>
-</div>
 
     <!--Hiển thị sản phẩm cây cảnh-->
     <asp:PlaceHolder ID="cayCanhRow" runat="server"></asp:PlaceHolder>
@@ -204,6 +212,36 @@
             -webkit-box-orient: vertical; /* Định hướng theo chiều dọc */
             -webkit-line-clamp: 2; /* Giới hạn số dòng hiển thị */
             white-space: normal; /* Cho phép xuống dòng */
+        }
+
+        .category-row {
+            display: flex;
+            justify-content: center;
+        }
+
+        .category-panel {
+            width: 100px;
+            text-align: center;
+            margin: 15px;
+            padding: 5px;
+        }
+
+        .category-panel:hover {
+            background-color: #00a896;
+            color: white;
+            transition: all 300ms;
+            box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+        }
+
+        .category-img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 2px;
+            margin-bottom: 10px;
+        }
+
+        .category-name {
         }
     </style>
 </asp:Content>

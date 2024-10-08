@@ -1,4 +1,5 @@
-﻿using BTL_WEB2.App_Code.Product;
+﻿using BTL_WEB2.App_Code.Category;
+using BTL_WEB2.App_Code.Product;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -19,6 +20,8 @@ namespace BTL_WEB2.Pages.WebPage
             productListBySale = productDAO.getListProduct("sale"); //Lấy sản phẩm sắp xếp theo sale
             productListByBanChay = productDAO.getListProduct("banChay"); //Lấy sản phẩm sắp xếp theo số lượng đã bán
             productListByCayAnQua = productDAO.getListProduct("cayAnQua"); //Lấy sản phẩm cây ăn quả
+
+            displayCategoryRow();
 
             DisplayProducts(saleRow, "sale");
             DisplayProducts(banChayRow, "banChay");
@@ -201,6 +204,45 @@ namespace BTL_WEB2.Pages.WebPage
 
             // Chuyển hướng đến trang chi tiết sản phẩm
             Response.Redirect("ChiTietSanPham.aspx");
+        }
+
+        //Lấy danh sách danh mục để hiển thị lên đầu trang
+        private void displayCategoryRow()
+        {
+            CategoryDAO categoryDAO = new CategoryDAO();
+            categoryDAO.GetList();
+            //Lấy danh sách danh mục trong cơ sở dữ liệu
+            List<Category> listCategory = new List<Category>();
+            listCategory = categoryDAO.listCategory;
+
+            foreach (Category category in listCategory)
+            {
+                //tạo các khung chứa danh sách danh mục và hiển thị trên Placehoder CategoryRow
+                Panel categoryPanel = new Panel
+                {
+                    CssClass = "category-panel",
+                };
+
+                // Tạo điều khiển Image
+                Image categoryImage = new Image
+                {
+                    CssClass = "category-img",
+                    ImageUrl = category.getAnhDanhMuc(),
+                    Width = Unit.Percentage(100), // Chiều rộng ảnh
+                };
+
+                Label categoryName = new Label
+                {
+                    CssClass = "category-name",
+                    Text = category.getTenDanhMuc(),
+                };
+
+                //Thêm ảnh và tên danh mục vào vùng chứa
+                categoryPanel.Controls.Add(categoryImage);
+                categoryPanel.Controls.Add(categoryName);
+
+                categoryRow.Controls.Add(categoryPanel);
+            }
         }
     }
 }
