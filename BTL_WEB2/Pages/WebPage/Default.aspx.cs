@@ -1,6 +1,7 @@
 ﻿using BTL_WEB2.App_Code.Product;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Web.UI.WebControls;
 
 namespace BTL_WEB2.Pages.WebPage
@@ -8,37 +9,49 @@ namespace BTL_WEB2.Pages.WebPage
     public partial class WebForm1 : System.Web.UI.Page
     {
         ProductDAO productDAO;
+        List<Product> productListBySale = new List<Product>(); //list chứa danh sách sản phẩm sắp xếp theo giảm giá
+        List<Product> productListByBanChay = new List<Product>(); //list chứa danh sách sản phẩm săp xếp theo bán chạy
+        List<Product> productListByCayAnQua = new List<Product>(); //list chứa danh sách sản phẩm cây ăn quả
         protected void Page_Load(object sender, EventArgs e)
         {
             productDAO = new ProductDAO();
 
-            if (!IsPostBack)
-            {
-                productDAO.getListProduct();
-                LoadProducts();
-            }
-        }
+            productListBySale = productDAO.getListProduct("sale"); //Lấy sản phẩm sắp xếp theo sale
+            productListByBanChay = productDAO.getListProduct("banChay"); //Lấy sản phẩm sắp xếp theo số lượng đã bán
+            productListByCayAnQua = productDAO.getListProduct("cayAnQua"); //Lấy sản phẩm cây ăn quả
 
-        //Hiển thị danh sách sản phẩm
-        private void LoadProducts()
-        {
             DisplayProducts(saleRow, "sale");
+            DisplayProducts(banChayRow, "banChay");
+            DisplayProducts(cayAnQuaRow, "cayAnQua");
         }
 
+        //Tạo danh sách sản phẩm
         private void DisplayProducts(PlaceHolder div, string category)
         {
-            List<Product> listProduct = GetProductsListByCategory(category);
 
-            for (int i = 0; i < listProduct.Count; i++)
+            List<Product> listProduct = new List<Product>();
+
+            switch (category)
             {
-                Product product = listProduct[i];
+                case "sale":
+                    listProduct = GetProductsListByCategory("sale");
+                    break;
+                case "banChay":
+                    listProduct = GetProductsListByCategory("banChay");
+                    break;
+                case "cayAnQua":
+                    listProduct = GetProductsListByCategory("cayAnQua");
+                    break;
+            }
+
+            foreach (Product product in listProduct)
+            {
 
                 // Tạo một div chứa các điều khiển
                 Panel productPanel = new Panel
                 {
                     CssClass = "product-panel",
-                    Width = Unit.Percentage(20),
-
+                    Width = Unit.Percentage(18),
                 };
 
                 Panel inforProductPanel = new Panel
@@ -58,75 +71,136 @@ namespace BTL_WEB2.Pages.WebPage
                 // Tạo điều khiển Label cho tên sản phẩm
                 Label productName = new Label
                 {
-                    Text = $"<h3>{product.getTenSanPham()}</h3>",
-                    CssClass = "product-name" // Thêm class CSS nếu cần
+                    Text = $"<p>{product.getTenSanPham()}</p>",
+                    CssClass = "product-name"
                 };
+                Panel productNamePanel = new Panel
+                {
+                    CssClass = "product-name-panel"
+                };
+                productNamePanel.Controls.Add(productName);
+
 
                 // Tạo điều khiển Label cho giá sản phẩm
                 Label productPrice = new Label
                 {
-                    Text = $"<p>Giá: {product.getGiaSanPham()} VND</p>",
+                    Text = product.getGiaSanPham().ToString("N0", new CultureInfo("vi-VN")) + " VND",
                     CssClass = "product-price"
                 };
 
-                // Tạo điều khiển Label cho giảm giá
-                Label productDiscount = new Label
+                //Tạo label cho số lượng mua
+                Label productQuantitySold = new Label
                 {
-                    Text = $"<p>Giảm giá: {product.getGiamGia()}%</p>",
-                    CssClass = "product-discount"
+                    Text = $"<div>{product.getSoLuongDaBan().ToString()} Đã bán</div>",
                 };
 
-                // Tạo điều khiển LinkButton
+                // Tạo điều khiển Label cho giảm giá, nếu không phải là sản phẩm đang giảm giá thì sẽ ẩn label này
+                Label productDiscount = new Label();
+                if (category.Equals("sale") && product.getGiamGia() > 0)
+                {
+                    productDiscount = new Label
+                    {
+                        Text = $"<p>-{product.getGiamGia()}%</p>",
+                        CssClass = "product-discount"
+                    };
+                }
+
+                // Tạo nút LinkButton để xem chi tiết sản phẩm
                 LinkButton productLink = new LinkButton
                 {
                     Text = "Xem chi tiết", // Văn bản của nút
-                    CssClass = "product-link" // Thêm class CSS nếu cần
+                    CssClass = "product-link",
+                    Width = Unit.Percentage(100),
+                    CommandArgument = product.getMaSanPham().ToString(),
                 };
+                // Gắn sự kiện Click cho nút
+                productLink.Click += ProductLink_Click;
+
 
                 // Thêm các điều khiển vào panel
-                inforProductPanel.Controls.Add(productName);
+                inforProductPanel.Controls.Add(productNamePanel);
                 inforProductPanel.Controls.Add(productPrice);
-                inforProductPanel.Controls.Add(productDiscount);
+                inforProductPanel.Controls.Add(productQuantitySold);
                 inforProductPanel.Controls.Add(productLink);
 
                 productPanel.Controls.Add(productImage);
                 productPanel.Controls.Add(inforProductPanel);
+                productPanel.Controls.Add(productDiscount);
+
 
                 // Thêm panel vào PlaceHolder
                 div.Controls.Add(productPanel);
             }
         }
 
-
-
+        //Lấy 5 sản phẩm theo danh mục
         private List<Product> GetProductsListByCategory(string category)
         {
-            List<Product> listProduct = new List<Product>();
-            int bienDem = 0; //Biến đếm để đếm số lượng sản phẩm lấy ra
+            List<Product> listProducts = new List<Product>();
+            int bienDem = 0; // Biến đếm để đếm số lượng sản phẩm lấy ra
 
-            //Lấy sản phẩm đang giảm giá
+            // Lấy sản phẩm đang giảm giá
             if (category.Equals("sale"))
             {
-                foreach (Product product in productDAO.listProduct)
+
+                foreach (Product product in productListBySale)
                 {
-                    if (product.getGiamGia() > 0 && bienDem < 4)
+                    if (product.getGiamGia() > 0) //Nếu mà sản phẩm không được giảm giá
                     {
-                        listProduct.Add(product);
+                        listProducts.Add(product);
                         bienDem++;
                     }
-                    else
-                    {
-                        return listProduct;
-                    }
+
+                    // Kiểm tra nếu đã đủ 5 sản phẩm
+                    if (bienDem == 5)
+                        break; // Kết thúc vòng lặp nếu đủ sản phẩm
                 }
             }
-            //Lấy sản phẩm bán chạy
+            // Lấy sản phẩm bán chạy
             else if (category.Equals("banChay"))
             {
 
+                foreach (Product product in productListByBanChay)
+                {
+                    listProducts.Add(product);
+                    bienDem++;
+
+                    // Kiểm tra nếu đã đủ 5 sản phẩm
+                    if (bienDem == 5)
+                        break; // Kết thúc vòng lặp nếu đủ sản phẩm
+                }
+            }
+            //Lấy sản phẩm danh mục cây ăn quả
+            else if (category.Equals("cayAnQua"))
+            {
+
+                foreach (Product product in productListByCayAnQua)
+                {
+                    listProducts.Add(product);
+                    bienDem++;
+
+                    // Kiểm tra nếu đã đủ 5 sản phẩm
+                    if (bienDem == 5)
+                        break; // Kết thúc vòng lặp nếu đủ sản phẩm
+                }
             }
 
-            return listProduct;
+            return listProducts;
+        }
+
+
+        // Chuyển sang trang xem chi tiết sản phẩm
+        protected void ProductLink_Click(object sender, EventArgs e)
+        {
+            // Lấy thông tin từ nút được nhấn
+            LinkButton clickedButton = (LinkButton)sender;
+            string productId = clickedButton.CommandArgument; // Lấy ID sản phẩm từ CommandArgument
+
+            // Lưu ID sản phẩm vào session nếu cần sử dụng sau
+            Session["SelectedProductId"] = productId;
+
+            // Chuyển hướng đến trang chi tiết sản phẩm
+            Response.Redirect("ChiTietSanPham.aspx");
         }
     }
 }

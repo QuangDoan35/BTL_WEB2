@@ -11,88 +11,88 @@ namespace BTL_WEB2.Pages.WebPage
 {
 
 
-    public partial class WebForm1
+    public partial class ChiTietSanPham
     {
 
         /// <summary>
-        /// saleLink control.
+        /// imageProduct control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink saleLink;
+        protected global::System.Web.UI.WebControls.Image imageProduct;
 
         /// <summary>
-        /// saleRow control.
+        /// lblTenSanPham control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder saleRow;
+        protected global::System.Web.UI.WebControls.Label lblTenSanPham;
 
         /// <summary>
-        /// HyperLink1 control.
+        /// Decor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
+        protected global::System.Web.UI.WebControls.PlaceHolder Decor;
 
         /// <summary>
-        /// banChayRow control.
+        /// lblGiaSanPham control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder banChayRow;
+        protected global::System.Web.UI.WebControls.Label lblGiaSanPham;
 
         /// <summary>
-        /// HyperLink2 control.
+        /// lblGiaSanPhamSauKhiSale control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink2;
+        protected global::System.Web.UI.WebControls.Label lblGiaSanPhamSauKhiSale;
 
         /// <summary>
-        /// cayAnQuaRow control.
+        /// lblSoluongDaBan control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder cayAnQuaRow;
+        protected global::System.Web.UI.WebControls.Label lblSoluongDaBan;
 
         /// <summary>
-        /// cayCanhRow control.
+        /// lblMoTaSanPham control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder cayCanhRow;
+        protected global::System.Web.UI.WebControls.Label lblMoTaSanPham;
 
         /// <summary>
-        /// senDaRow control.
+        /// btnAddCart control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder senDaRow;
+        protected global::System.Web.UI.WebControls.Button btnAddCart;
 
         /// <summary>
-        /// hatGiongRow control.
+        /// btnBuy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder hatGiongRow;
+        protected global::System.Web.UI.WebControls.Button btnBuy;
     }
 }

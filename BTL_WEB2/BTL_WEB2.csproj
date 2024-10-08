@@ -117,6 +117,7 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\Styles\Admin\Admin.css" />
+    <Content Include="Content\Styles\WebPage\ChiTietSanPham.css" />
     <Content Include="Content\Styles\WebPage\WebPageTheme.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -129,6 +130,7 @@
     <Content Include="Images\Category\DefaultCategoryImg.png" />
     <Content Include="Images\Category\header-decor.png" />
     <Content Include="Images\logo.png" />
+    <Content Include="Images\plashSale.svg" />
     <Content Include="Images\Product\carousel-4.jpg" />
     <Content Include="Pages\AdminPage\ProductManager.aspx" />
     <Content Include="Pages\AdminPage\CategoryManager.aspx" />
@@ -136,6 +138,7 @@
     <Content Include="Pages\WebPage\BanChay.aspx" />
     <Content Include="Pages\WebPage\CayAnQua.aspx" />
     <Content Include="Pages\WebPage\CayCanh.aspx" />
+    <Content Include="Pages\WebPage\ChiTietSanPham.aspx" />
     <Content Include="Pages\WebPage\Default.aspx" />
     <Content Include="Pages\WebPage\GioHang.aspx" />
     <Content Include="Pages\WebPage\HatGiong.aspx" />
@@ -269,6 +272,13 @@
     </Compile>
     <Compile Include="Pages\WebPage\CayCanh.aspx.designer.cs">
       <DependentUpon>CayCanh.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WebPage\ChiTietSanPham.aspx.cs">
+      <DependentUpon>ChiTietSanPham.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\WebPage\ChiTietSanPham.aspx.designer.cs">
+      <DependentUpon>ChiTietSanPham.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\WebPage\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
