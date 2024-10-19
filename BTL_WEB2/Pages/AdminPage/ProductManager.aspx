@@ -96,13 +96,15 @@
 
                 <asp:View runat="server" ID="editProduct">
                     <div class="container">
-                        <asp:Label ID="Label1" runat="server" Text="" CssClass="error"></asp:Label>
+                        <asp:Label ID="lb_errorEdit" runat="server" CssClass="error"></asp:Label>
                         <div class="row">
                             <div class="col">Mã sản phẩm</div>
                             <div class="col">
                                 <asp:TextBox ID="txtEditMaSanPham" runat="server" ReadOnly="true"></asp:TextBox>
+                                <br />
                             </div>
                         </div>
+                 
                         <div class="row">
                             <div class="col">Tên sản phẩm</div>
                             <div class="col">
@@ -131,6 +133,7 @@
                          <div class="col">Giảm giá sản phẩm</div>
                          <div class="col">
                              <asp:TextBox ID="txtEditGiamGiaSanPham" runat="server"></asp:TextBox>
+                             <br />
                          </div>
                      </div>
 
@@ -145,12 +148,11 @@
                                 <asp:FileUpload ID="fileEditAnhSanPham" runat="server" />
                             </div>
                             <div>
-                                <asp:Button runat="server" Text="Xóa thông tin cũ" BackColor="#FFD166" BorderStyle="None" ForeColor="White" OnClick="RemoveOldInfor_Click" />
                             </div>
                         </div>
+                        <asp:Image ID="ImageEdit" CssClass="review-image" runat="server" ImageAlign="Middle" />
                     </div>
                     <div>
-                        <asp:Image ID="Image2" CssClass="review-image" runat="server" ImageAlign="Middle" />
                     </div>
                     <div style="display: flex;">
                         <asp:Button runat="server" ID="btnDeleteProduct" Text="Xóa sản phẩm" Width="100%" BackColor="#EF476F" BorderColor="White" BorderStyle="None" ForeColor="White" Height="40px" OnClick="btnDeleteProduct_Click" />
@@ -158,6 +160,26 @@
                     </div>
                 </asp:View>
             </asp:MultiView>
+
+            <!-- Thêm đoạn script dưới đây để xử lý việc hiển thị ảnh -->
+        <script type="text/javascript">
+            function PreviewImage() {
+                var fileUpload = document.getElementById('<%=fileEditAnhSanPham.ClientID %>');
+                var imageEdit = document.getElementById('<%=ImageEdit.ClientID %>');
+
+                // Kiểm tra nếu người dùng đã chọn tệp
+                if (fileUpload.files && fileUpload.files[0]) {
+                    var reader = new FileReader();
+
+                    // Sự kiện khi ảnh được tải lên
+                    reader.onload = function (e) {
+                        imageEdit.src = e.target.result; // Hiển thị ảnh đã chọn
+                    };
+
+                    reader.readAsDataURL(fileUpload.files[0]); // Đọc tệp dưới dạng URL
+                }
+            }
+</script>
         </div>
     </div>
 </asp:Content>

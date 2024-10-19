@@ -95,7 +95,7 @@
                         </div>
                     </div>
                 </div>
-                <div>
+                <div> 
                     <asp:Image ID="Image2" CssClass="review-image" runat="server" ImageAlign="Middle" />
                 </div>
                 <div style="display: flex;">

@@ -119,6 +119,7 @@
     <Content Include="Content\Styles\Admin\Admin.css" />
     <Content Include="Content\Styles\WebPage\ChiTietSanPham.css" />
     <Content Include="Content\Styles\WebPage\WebPageTheme.css" />
+    <Content Include="df.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Images\Carousel\carousel-1.jpg" />
@@ -132,8 +133,10 @@
     <Content Include="Images\logo.png" />
     <Content Include="Images\plashSale.svg" />
     <Content Include="Images\Product\carousel-4.jpg" />
+    <Content Include="Pages\AdminPage\AdminLogin.aspx" />
     <Content Include="Pages\AdminPage\ProductManager.aspx" />
     <Content Include="Pages\AdminPage\CategoryManager.aspx" />
+    <Content Include="Pages\AdminPage\Register.aspx" />
     <Content Include="Pages\WebPage\Account.aspx" />
     <Content Include="Pages\WebPage\BanChay.aspx" />
     <Content Include="Pages\WebPage\CayAnQua.aspx" />
@@ -231,6 +234,13 @@
     <Compile Include="MasterPages\WebPageTheme.Master.designer.cs">
       <DependentUpon>WebPageTheme.Master</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AdminPage\AdminLogin.aspx.cs">
+      <DependentUpon>AdminLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\AdminPage\AdminLogin.aspx.designer.cs">
+      <DependentUpon>AdminLogin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AdminPage\ProductManager.aspx.cs">
       <DependentUpon>ProductManager.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -244,6 +254,13 @@
     </Compile>
     <Compile Include="Pages\AdminPage\CategoryManager.aspx.designer.cs">
       <DependentUpon>CategoryManager.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AdminPage\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\AdminPage\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\WebPage\Account.aspx.cs">
       <DependentUpon>Account.aspx</DependentUpon>
