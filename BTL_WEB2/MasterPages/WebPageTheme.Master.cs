@@ -15,7 +15,6 @@ namespace BTL_WEB2.MasterPages
                 senDaLink.NavigateUrl = "../Pages/WebPage/SenDa.aspx";
                 hatGiongLink.NavigateUrl = "../Pages/WebPage/HatGiong.aspx";
                 banChayLink.NavigateUrl = "../Pages/WebPage/BanChay.aspx";
-                searchLink.NavigateUrl = "../Pages/WebPage/Search.aspx";
                 cartLink.NavigateUrl = "../Pages/WebPage/GioHang.aspx";
                 accontLink.NavigateUrl = "../Pages/WebPage/Account.aspx";
 

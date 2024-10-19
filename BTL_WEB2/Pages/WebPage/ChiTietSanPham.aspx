@@ -2,15 +2,12 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="plHead" runat="server">
     <link rel="stylesheet" type="text/css" href="../../Content/Styles/WebPage/ChiTietSanPham.css" />
-    <title>
-        Chi tiết sản phẩm
-    </title>
+    <title>Chi tiết sản phẩm</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentWebPage" runat="server">
     <div class="wrapper">
         <!--Giới thiệu sản phẩm-->
         <div class="product-briefing">
-
             <!--Ảnh sản phẩm và chia sẻ sản phẩm-->
             <div class="left-col">
                 <!--Ảnh sản phẩm-->
@@ -30,7 +27,6 @@
                     </div>
                 </div>
             </div>
-
             <!--Chi tiết sản phẩm và mua-->
             <div class="right-col">
                 <!--Hiện thông tin sản phẩm-->
@@ -58,8 +54,19 @@
             </div>
         </div>
 
-        <!--Đánh giá sản phẩm-->
-        <div class="product-ratings">
+        <!--Gợi ý sản phẩm-->
+        <div style="width: 90%; margin-top: 100px;">
+            <p style="font-size: 20px; font-weight: 500;">CÓ THỂ BẠN SẼ THÍCH</p>
+            <div class="product-suggets product-row">
+                <asp:PlaceHolder ID="productSuggetsRow1" runat="server"></asp:PlaceHolder>
+            </div>
+            <div class="product-suggets product-row">
+                <asp:PlaceHolder ID="productSuggetsRow2" runat="server"></asp:PlaceHolder>
+            </div>
         </div>
+        <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn-xemthemsanpham">
+             Xem thêm sản phẩm
+             <i class="bi bi-arrow-repeat"></i>
+        </asp:LinkButton>
     </div>
 </asp:Content>

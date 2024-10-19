@@ -129,14 +129,21 @@
     <Content Include="Images\Carousel\carousel-5.jpg" />
     <Content Include="Images\Carousel\carousel-6.jpg" />
     <Content Include="Images\Category\DefaultCategoryImg.png" />
-    <Content Include="Images\Category\header-decor.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\plashSale.svg" />
-    <Content Include="Images\Product\carousel-4.jpg" />
+    <Content Include="Images\Product\DM001\DM001.jpg" />
+    <Content Include="Images\Product\DM002\DM002.jpg" />
+    <Content Include="Images\Product\DM003\DM003.jpg" />
+    <Content Include="Images\Product\DM004\DM004.jpg" />
+    <Content Include="Images\Product\DM005\DM005.png" />
+    <Content Include="Images\Product\DM006\DM006.jpg" />
+    <Content Include="Images\Product\DM007\DM007.jpg" />
+    <Content Include="Images\Product\DM008\DM008.jpg" />
+    <Content Include="Images\Product\DM009\DM009.jpg" />
+    <Content Include="Images\Product\DM010\DM010.jpg" />
     <Content Include="Pages\AdminPage\AdminLogin.aspx" />
     <Content Include="Pages\AdminPage\ProductManager.aspx" />
     <Content Include="Pages\AdminPage\CategoryManager.aspx" />
-    <Content Include="Pages\AdminPage\Register.aspx" />
     <Content Include="Pages\WebPage\Account.aspx" />
     <Content Include="Pages\WebPage\BanChay.aspx" />
     <Content Include="Pages\WebPage\CayAnQua.aspx" />
@@ -254,13 +261,6 @@
     </Compile>
     <Compile Include="Pages\AdminPage\CategoryManager.aspx.designer.cs">
       <DependentUpon>CategoryManager.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\AdminPage\Register.aspx.cs">
-      <DependentUpon>Register.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\AdminPage\Register.aspx.designer.cs">
-      <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\WebPage\Account.aspx.cs">
       <DependentUpon>Account.aspx</DependentUpon>

@@ -1,5 +1,6 @@
 ﻿using BTL_WEB2.App_Code.Product;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Web.UI.WebControls;
 
@@ -14,6 +15,8 @@ namespace BTL_WEB2.Pages.WebPage
             productDAO.getListProduct("");
 
             showProduct();
+
+            showsuggetsProductList();
         }
 
         //Hiển thị thông tin lên giao diện
@@ -74,7 +77,7 @@ namespace BTL_WEB2.Pages.WebPage
         //Lấy thông tin của sản phẩm
         private Product getInforProductSelected()
         {
-            string maSanPham = Session["SelectedProductId"].ToString();
+            string maSanPham = Request.QueryString["maSP"];
 
             Product product;
 
@@ -100,6 +103,141 @@ namespace BTL_WEB2.Pages.WebPage
                 }
             }
             return null;
+        }
+
+        //Hiện sản phẩm gợi ý
+        private void showsuggetsProductList()
+        {
+            List<Product> productList = new List<Product>();
+            productList = getsuggetsProductList();
+
+            int i = 0;
+
+            foreach (Product product in productList)
+            {
+                // Tạo một div chứa các điều khiển
+                Panel productPanel = new Panel
+                {
+                    CssClass = "product-panel",
+                    Width = Unit.Percentage(18),
+                };
+
+                Panel inforProductPanel = new Panel
+                {
+                    CssClass = "container-infor-product"
+                };
+
+                // Tạo điều khiển Image
+                Image productImage = new Image
+                {
+                    CssClass = "product-img",
+                    ImageUrl = product.getAnhSanPham(),
+                    Width = Unit.Percentage(100), // Chiều rộng ảnh
+                    Style = { ["object-fit"] = "cover" } // Kiểu cho ảnh
+                };
+
+                // Tạo điều khiển Label cho tên sản phẩm
+                Label productName = new Label
+                {
+                    Text = $"<p>{product.getTenSanPham()}</p>",
+                    CssClass = "product-name"
+                };
+                Panel productNamePanel = new Panel
+                {
+                    CssClass = "product-name-panel"
+                };
+                productNamePanel.Controls.Add(productName);
+
+
+                // Tạo điều khiển Label cho giá sản phẩm
+                Label productPrice = new Label
+                {
+                    Text = product.getGiaSanPham().ToString("N0", new CultureInfo("vi-VN")) + " VND",
+                    CssClass = "product-price"
+                };
+
+                //Tạo label cho số lượng mua
+                Label productQuantitySold = new Label
+                {
+                    Text = $"<div>{product.getSoLuongDaBan().ToString()} Đã bán</div>",
+                };
+
+                // Tạo nút LinkButton để xem chi tiết sản phẩm
+                LinkButton productLink = new LinkButton
+                {
+                    Text = "Xem chi tiết", // Văn bản của nút
+                    CssClass = "product-link",
+                    Width = Unit.Percentage(100),
+                    CommandArgument = product.getMaSanPham().ToString(),
+                };
+                // Gắn sự kiện Click cho nút
+                productLink.Click += ProductLink_Click;
+
+
+                // Thêm các điều khiển vào panel
+                inforProductPanel.Controls.Add(productNamePanel);
+                inforProductPanel.Controls.Add(productPrice);
+                inforProductPanel.Controls.Add(productQuantitySold);
+                inforProductPanel.Controls.Add(productLink);
+
+                productPanel.Controls.Add(productImage);
+                productPanel.Controls.Add(inforProductPanel);
+
+                // Thêm panel vào PlaceHolder
+                if (i < 5)
+                {
+                    productSuggetsRow1.Controls.Add(productPanel);
+                }
+                else
+                {
+                    productSuggetsRow2.Controls.Add(productPanel);
+                }
+
+                i++;
+            }
+        }
+
+        //Sự kiện bấm nút
+        protected void ProductLink_Click(object sender, EventArgs e)
+        {
+            // Lấy thông tin từ nút được nhấn
+            LinkButton clickedButton = (LinkButton)sender;
+            string productId = clickedButton.CommandArgument; // Lấy ID sản phẩm từ CommandArgument
+
+            // Lưu ID sản phẩm vào session nếu cần sử dụng sau
+            Session["SelectedProductId"] = productId;
+
+            // Chuyển hướng đến trang chi tiết sản phẩm
+            Response.Redirect("ChiTietSanPham.aspx");
+
+            Response.Redirect(Request.RawUrl); //Load lại trang và hiện sản phẩm mới
+        }
+
+        //Tạo danh sách sản phẩm gợi ý tương tự, in ra 5 sản phẩm trên một dòng
+        private List<Product> getsuggetsProductList()
+        {
+            List<Product> listSuggetsProduct = new List<Product>();
+            Product product = new Product();
+            product = getInforProductSelected();
+            int i = 0;
+
+            foreach (Product p in productDAO.listProduct)
+            {
+                if (i < 10) //Kiểm tra xem đã lấy đủ 10 sản phẩm chưa
+                {
+                    if (product.getMaDanhMuc().Equals(p.getMaDanhMuc())) //Nếu như trùng danh mục với sản phẩm được chọn thì lấy
+                    {
+                        listSuggetsProduct.Add(p);
+                        i++;
+                    }
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            return listSuggetsProduct;
         }
     }
 }

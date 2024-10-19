@@ -70,19 +70,19 @@
                                 <asp:DropDownList ID="ddl_danhmuc" runat="server"></asp:DropDownList>
                             </div>
                         </div>
-                    <div class="row">
-                        <div class="col">Giảm giá sản phẩm</div>
-                        <div class="col">
-                            <asp:TextBox ID="txbGiamGiaSanPham" runat="server"></asp:TextBox>
+                        <div class="row">
+                            <div class="col">Giảm giá sản phẩm</div>
+                            <div class="col">
+                                <asp:TextBox ID="txbGiamGiaSanPham" runat="server"></asp:TextBox>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col">Số lượng đã bán</div>
-                        <div class="col">
-                            <asp:TextBox ID="txbSoLuongDaBan" runat="server"></asp:TextBox>
+                        <div class="row">
+                            <div class="col">Số lượng đã bán</div>
+                            <div class="col">
+                                <asp:TextBox ID="txbSoLuongDaBan" runat="server"></asp:TextBox>
+                            </div>
                         </div>
-                    </div>
                         <div class="row">
                             <div class="col">
                                 <asp:FileUpload ID="fileAnhSanPham" runat="server" />
@@ -92,7 +92,7 @@
                     <asp:Button runat="server" Text="Thêm mới sản phẩm" Width="100%" BackColor="#06D6A0" BorderColor="White" BorderStyle="None" ForeColor="White" Height="40px" OnClick="SaveAddProductButton_Click" />
                 </asp:View>
 
-                
+
 
                 <asp:View runat="server" ID="editProduct">
                     <div class="container">
@@ -104,7 +104,7 @@
                                 <br />
                             </div>
                         </div>
-                 
+
                         <div class="row">
                             <div class="col">Tên sản phẩm</div>
                             <div class="col">
@@ -129,20 +129,20 @@
                                 <asp:TextBox ID="txtEditSLTK" runat="server"></asp:TextBox>
                             </div>
                         </div>
-                         <div class="row">
-                         <div class="col">Giảm giá sản phẩm</div>
-                         <div class="col">
-                             <asp:TextBox ID="txtEditGiamGiaSanPham" runat="server"></asp:TextBox>
-                             <br />
-                         </div>
-                     </div>
+                        <div class="row">
+                            <div class="col">Giảm giá sản phẩm</div>
+                            <div class="col">
+                                <asp:TextBox ID="txtEditGiamGiaSanPham" runat="server"></asp:TextBox>
+                                <br />
+                            </div>
+                        </div>
 
-                     <div class="row">
-                         <div class="col">Số lượng đã bán</div>
-                         <div class="col">
-                             <asp:TextBox ID="txtEditSoLuongDaBan" runat="server"></asp:TextBox>
-                         </div>
-                     </div>
+                        <div class="row">
+                            <div class="col">Số lượng đã bán</div>
+                            <div class="col">
+                                <asp:TextBox ID="txtEditSoLuongDaBan" runat="server"></asp:TextBox>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col">
                                 <asp:FileUpload ID="fileEditAnhSanPham" runat="server" />
@@ -161,25 +161,25 @@
                 </asp:View>
             </asp:MultiView>
 
-            <!-- Thêm đoạn script dưới đây để xử lý việc hiển thị ảnh -->
-        <script type="text/javascript">
-            function PreviewImage() {
-                var fileUpload = document.getElementById('<%=fileEditAnhSanPham.ClientID %>');
+            <!--hiển thị ảnh -->
+            <script type="text/javascript">
+                function PreviewImage() {
+                    var fileUpload = document.getElementById('<%=fileEditAnhSanPham.ClientID %>');
                 var imageEdit = document.getElementById('<%=ImageEdit.ClientID %>');
 
-                // Kiểm tra nếu người dùng đã chọn tệp
-                if (fileUpload.files && fileUpload.files[0]) {
-                    var reader = new FileReader();
+                    // Kiểm tra nếu người dùng đã chọn tệp
+                    if (fileUpload.files && fileUpload.files[0]) {
+                        var reader = new FileReader();
 
-                    // Sự kiện khi ảnh được tải lên
-                    reader.onload = function (e) {
-                        imageEdit.src = e.target.result; // Hiển thị ảnh đã chọn
-                    };
+                        // Sự kiện khi ảnh được tải lên
+                        reader.onload = function (e) {
+                            imageEdit.src = e.target.result; // Hiển thị ảnh đã chọn
+                        };
 
-                    reader.readAsDataURL(fileUpload.files[0]); // Đọc tệp dưới dạng URL
+                        reader.readAsDataURL(fileUpload.files[0]); // Đọc tệp dưới dạng URL
+                    }
                 }
-            }
-</script>
+            </script>
         </div>
     </div>
 </asp:Content>

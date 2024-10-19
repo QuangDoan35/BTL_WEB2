@@ -9,7 +9,7 @@ namespace BTL_WEB2.Pages.AdminPage
     public partial class ProductManager : System.Web.UI.Page
     {
         string connectionString = WebConfigurationManager.ConnectionStrings["DataBase_QLBanCay"].ConnectionString;
-
+        string filePath = "";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -124,11 +124,6 @@ namespace BTL_WEB2.Pages.AdminPage
             }
         }
 
-        //Nut xem truoc san pham
-        protected void ReviewImageButton_Click(object sender, EventArgs e)
-        {
-        }
-
         //Nut them moi san pham
         protected void SaveAddProductButton_Click(object sender, EventArgs e)
         {
@@ -142,8 +137,8 @@ namespace BTL_WEB2.Pages.AdminPage
                 string.IsNullOrEmpty(txbGiamGiaSanPham.Text) ||
                 string.IsNullOrEmpty(txbSoLuongDaBan.Text))
             {
-                lblError.Text = "Không được để trống một trong các ô";
-                return; // Thoát khỏi hàm nếu có trường rỗng
+                lblError.Text = "Vui lòng điền đầy đủ thông tin của sản phẩm!";
+                return;
             }
 
             string filename = "";
@@ -179,31 +174,16 @@ namespace BTL_WEB2.Pages.AdminPage
                     cmd.Parameters.AddWithValue("@giamGia", txbGiamGiaSanPham.Text);
                     cmd.Parameters.AddWithValue("@SoLuongDaBan", txbSoLuongDaBan.Text);
 
-                    try
-                    {
-                        conn.Open();
-                        cmd.ExecuteNonQuery(); // Thực hiện lệnh
-                        lblError.Text = "Thêm sản phẩm thành công."; // Hiển thị thông báo thành công
-                    }
-                    catch (SqlException ex)
-                    {
-                        if (ex.Number == 50000) 
-                        {
-                            lblError.Text = ex.Message; 
-                            lblError.ForeColor = System.Drawing.Color.Red;
-                        }
-                        else
-                        {
-                            lblError.Text = "Đã xảy ra lỗi khi thêm sản phẩm. Vui lòng thử lại.";
-                        }
-                    }
+                    conn.Open();
+                    cmd.ExecuteNonQuery(); // Thực hiện lệnh
+                    lblError.Text = "Thêm sản phẩm thành công."; // Hiển thị thông báo thành công
                 }
             }
         }
 
 
 
-
+        //Chỉnh sửa sản phẩm
         protected void EditButton_Click(object sender, EventArgs e)
         {
             ProductView.ActiveViewIndex = 2;
@@ -233,6 +213,8 @@ namespace BTL_WEB2.Pages.AdminPage
                 {
                     if (data.Read())
                     {
+
+
                         // Nạp dữ liệu vào các trường chỉnh sửa
                         txtEditMaSanPham.Text = data["MaSanPham"].ToString();
                         txtEditTenSanPham.Text = data["TenSanPham"].ToString();
@@ -241,9 +223,9 @@ namespace BTL_WEB2.Pages.AdminPage
                         txtEditSLTK.Text = data["SoLuongTonKho"].ToString();
                         txtEditGiamGiaSanPham.Text = data["GiamGia"].ToString();
                         txtEditSoLuongDaBan.Text = data["SoLuongDaBan"].ToString();
-
                         // Hiển thị ảnh từ cơ sở dữ liệu
                         ImageEdit.ImageUrl = data["AnhSanPham"].ToString();
+                        filePath = data["AnhSanPham"].ToString();
                     }
                     else
                     {
@@ -253,21 +235,19 @@ namespace BTL_WEB2.Pages.AdminPage
             }
         }
 
-
-
-
-
-
         protected void SaveEditProductButton_Click(object sender, EventArgs e)
         {
-            string filePath = null;
 
             // Kiểm tra xem có tệp nào được tải lên không
             if (fileEditAnhSanPham.HasFile)
             {
                 string fileName = Path.GetFileName(fileEditAnhSanPham.FileName);
-                filePath = "~/Images/Product/" + fileName; // Đường dẫn lưu ảnh
+                filePath = "../../Images/Product/" + fileName; // Đường dẫn lưu ảnh
                 fileEditAnhSanPham.SaveAs(Server.MapPath(filePath)); // Lưu ảnh vào server
+            }
+            else
+            {
+                filePath = ImageEdit.ImageUrl;
             }
 
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -282,26 +262,16 @@ namespace BTL_WEB2.Pages.AdminPage
                     cmd.Parameters.AddWithValue("@tenSanPham", txtEditTenSanPham.Text);
                     cmd.Parameters.AddWithValue("@giaSanPham", Convert.ToDecimal(txtEditGiaSanPham.Text));
                     cmd.Parameters.AddWithValue("@moTaSanPham", txtEditMoTaSanPham.Text);
+                    cmd.Parameters.AddWithValue("@anhSanPham", filePath);
                     cmd.Parameters.AddWithValue("@soLuongTonKho", Convert.ToInt32(txtEditSLTK.Text)); // Chuyển đổi về INT
-                    cmd.Parameters.AddWithValue("@anhSanPham", "~/Images/Product/"+filePath ?? string.Empty); // Nếu không có tệp mới thì dùng string.Empty
                     cmd.Parameters.AddWithValue("@giamGia", txtEditGiamGiaSanPham.Text);
                     cmd.Parameters.AddWithValue("@SoLuongDaBan", txtEditSoLuongDaBan.Text);
 
-                    try
-                    {
-                        cmd.ExecuteNonQuery();
-                        lblError.Text = "Cập nhật thành công!";
+                    cmd.ExecuteNonQuery();
+                    lblError.Text = "Cập nhật thành công!";
 
-                        // Cập nhật ảnh sau khi lưu
-                        ImageEdit.ImageUrl = filePath ?? ImageEdit.ImageUrl; // Hiển thị ảnh mới nếu có, ngược lại giữ ảnh cũ
-
-                        // Tải lại dữ liệu
-                        LoadProductTable(); // Gọi lại phương thức này để refresh bảng
-                    }
-                    catch (SqlException ex)
-                    {
-                        lblError.Text = "Có lỗi xảy ra: " + ex.Message;
-                    }
+                    // Tải lại dữ liệu
+                    LoadProductTable(); // Gọi lại phương thức này để refresh bảng
                 }
             }
         }

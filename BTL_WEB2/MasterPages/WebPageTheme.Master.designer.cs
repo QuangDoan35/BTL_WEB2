@@ -42,6 +42,24 @@ namespace BTL_WEB2.MasterPages
         protected global::System.Web.UI.WebControls.Image Image4;
 
         /// <summary>
+        /// cartLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink cartLink;
+
+        /// <summary>
+        /// accontLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink accontLink;
+
+        /// <summary>
         /// saleLink control.
         /// </summary>
         /// <remarks>
@@ -94,33 +112,6 @@ namespace BTL_WEB2.MasterPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink banChayLink;
-
-        /// <summary>
-        /// searchLink control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink searchLink;
-
-        /// <summary>
-        /// cartLink control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink cartLink;
-
-        /// <summary>
-        /// accontLink control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink accontLink;
 
         /// <summary>
         /// ContentWebPage control.

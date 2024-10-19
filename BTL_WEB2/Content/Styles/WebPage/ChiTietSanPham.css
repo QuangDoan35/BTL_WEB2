@@ -37,7 +37,7 @@
 }
 
 .share i:hover {
-    color: dodgerblue;
+    color: limegreen;
 }
 
 .heart {
@@ -102,4 +102,118 @@
 .label-soluongdaban {
     margin-top: 20px;
     color: mediumseagreen;
+}
+
+
+.product-ratings {
+    width: 100%;
+    height: 200px;
+    background-color: black;
+}
+
+.product-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.product-panel {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    border-radius: 5px;
+    position: relative;
+    padding: 0;
+    border: 1px solid transparent;
+    background-color: white;
+}
+
+    .product-panel:hover {
+        border: 1px solid #00a896;
+    }
+
+.title-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 0;
+    width: 90%;
+    color: black;
+}
+
+.product-img {
+    border-radius: 5px 5px 0px 0px;
+    height: 200px;
+}
+
+.title-category {
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.link-xemthem {
+    color: #00a896;
+    border: 1px solid #00a896;
+    padding: 5px 10px;
+    border-radius: 10px 0 10px 0;
+}
+
+    .link-xemthem:hover {
+        background-color: #00a896;
+        color: white;
+        transition: all 300ms;
+    }
+
+.container-infor-product {
+    padding: 10px;
+}
+
+.product-discount {
+    background-color: red;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 10px;
+    border-radius: 0 3px 0 20px;
+    color: white;
+}
+
+.product-link {
+    color: black;
+    background-color: #00a896;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.product-price {
+    color: #09bc8a;
+    font-size: 22px;
+}
+
+.product-name {
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.product-name-panel {
+    width: 100%;
+    height: 51px;
+    overflow: hidden; /* Ẩn văn bản vượt ra ngoài */
+    display: -webkit-box; /* Hiển thị như một hộp */
+    -webkit-box-orient: vertical; /* Định hướng theo chiều dọc */
+    -webkit-line-clamp: 2; /* Giới hạn số dòng hiển thị */
+    white-space: normal; /* Cho phép xuống dòng */
+}
+
+.btn-xemthemsanpham {
+    margin: 100px;
+    color: black;
+}
+
+.btn-xemthemsanpham:hover {
+    color: springgreen;
 }

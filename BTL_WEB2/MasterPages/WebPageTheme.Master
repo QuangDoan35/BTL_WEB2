@@ -27,61 +27,65 @@
                     <asp:Image ID="Image4" runat="server" ImageUrl="~/Images/logo.png" Width="200px" />
                 </asp:HyperLink>
             </div>
-            <div class="menu">
-                <ul class="flex">
-                    <li style="background-color: #d81159;">
-                        <asp:HyperLink ID="saleLink" runat="server">
-                            SIÊU SALE
-                        </asp:HyperLink>
-                    </li>
-                    <li>
-                        <asp:HyperLink ID="cayAnQuaLink" runat="server">
-                            CÂY ĂN QUẢ
-                        </asp:HyperLink>
-                    </li>
-                    <li>
-                        <asp:HyperLink ID="cayCanhLink" runat="server">
-                            CÂY CẢNH
-                        </asp:HyperLink>
-                    </li>
-                    <li>
-                        <asp:HyperLink ID="senDaLink" runat="server">
-                            SEN ĐÁ
-                        </asp:HyperLink>
-                    </li>
-                    <li>
-                        <asp:HyperLink ID="hatGiongLink" runat="server">
-                            HẠT GIỐNG
-                        </asp:HyperLink>
-                    </li>
-                    <li>
-                        <asp:HyperLink ID="banChayLink" runat="server">
-                            BÁN CHẠY
-                        </asp:HyperLink>
-                    </li>
-                </ul>
-            </div>
-            <div class="searchbar-action flex">
 
-                <div class="searchbar flex">
-                    <asp:HyperLink ID="searchLink" runat="server">
-                        <i class="bi bi-search" style="color: #048A81; margin-right: 20px;"></i>
-                        <input type="text" placeholder="Bạn muốn tìm gì?" />
+            <div class="searchbar flex">
+                <i class="bi bi-search" style="color: #048A81; margin-right: 20px;"></i>
+                <input type="text" placeholder="Trồng cây, ươm mầm hạnh phúc" />
+            </div>
+
+            <div class="search-box-hidden">
+                <div class="search-box-content">
+                    <!--đóng gợi ý tìm kiếm-->
+                    <i class="bi bi-x-lg" style="color: #02c39a; cursor: pointer; font-size: 30px; float: right;" id="close-search-box-toggle-button"></i>
+                </div>
+            </div>
+
+            <div class="action">
+                <div class="cart">
+                    <asp:HyperLink ID="cartLink" runat="server">
+                        <i class="bi bi-bag-check" style="padding: 15px; font-size: 26px"></i>
                     </asp:HyperLink>
                 </div>
-                <div class="action flex">
-                    <div class="cart">
-                        <asp:HyperLink ID="cartLink" runat="server">
-                            <i class="bi bi-bag-check" style="padding: 15px; font-size: 26px"></i>
-                        </asp:HyperLink>
-                    </div>
-                    <div class="account">
-                        <asp:HyperLink ID="accontLink" runat="server">
-                            <i class="bi bi-person-rolodex" style="padding: 15px; font-size: 26px"></i>
-                        </asp:HyperLink>
-                    </div>
+                <div class="account">
+                    <asp:HyperLink ID="accontLink" runat="server">
+                        <i class="bi bi-person-rolodex" style="padding: 15px; font-size: 26px"></i>
+                    </asp:HyperLink>
                 </div>
             </div>
+        </div>
+        <div class="menu">
+            <ul style="display: flex; justify-content: center;">
+                <li style="background-color: #d81159;">
+                    <asp:HyperLink ID="saleLink" runat="server">
+                        SIÊU SALE
+                    </asp:HyperLink>
+                </li>
+                <li>
+                    <asp:HyperLink ID="cayAnQuaLink" runat="server">
+                        CÂY ĂN QUẢ
+                    </asp:HyperLink>
+                </li>
+                <li>
+                    <asp:HyperLink ID="cayCanhLink" runat="server">
+                        CÂY CẢNH
+                    </asp:HyperLink>
+                </li>
+                <li>
+                    <asp:HyperLink ID="senDaLink" runat="server">
+                        SEN ĐÁ
+                    </asp:HyperLink>
+                </li>
+                <li>
+                    <asp:HyperLink ID="hatGiongLink" runat="server">
+                        HẠT GIỐNG
+                    </asp:HyperLink>
+                </li>
+                <li>
+                    <asp:HyperLink ID="banChayLink" runat="server">
+                        BÁN CHẠY
+                    </asp:HyperLink>
+                </li>
+            </ul>
         </div>
     </header>
 
@@ -171,3 +175,24 @@
     </footer>
 </body>
 </html>
+
+<script>
+    //Ẩn hiện phần gợi ý tìm kiếm khi nhấn vào thanh tìm kiếm
+    var searchBar = document.getElementsByClassName("searchbar")[0]; // Lấy phần tử tìm kiếm đầu tiên
+    var searchBoxHidden = document.getElementsByClassName("search-box-hidden")[0]; // Lấy phần tử gợi ý đầu tiên
+    var closeSearchBoxToggleButton = document.getElementById("close-search-box-toggle-button");
+
+    searchBar.onclick = function () {
+        // Kiểm tra trạng thái hiển thị của searchBoxHidden
+        if (searchBoxHidden.style.display === "none" || searchBoxHidden.style.display === "") {
+            searchBoxHidden.style.display = "flex"; // Hiện phần tử
+            closeSearchBoxToggleButton.style.display = "flex"; // Hiện nút đóng
+        }
+    };
+
+    // Xử lý sự kiện click cho nút đóng
+    closeSearchBoxToggleButton.onclick = function () {
+        console.log("bam");
+        searchBoxHidden.style.display = "none"; // Ẩn phần gợi ý
+    };
+</script>

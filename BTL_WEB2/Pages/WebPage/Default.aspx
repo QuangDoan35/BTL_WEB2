@@ -20,7 +20,7 @@
 
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <asp:Image runat="server" ImageUrl="~/Images/Category/header-decor.png" CssClass="image-carousel" />
+                <asp:Image runat="server" ImageUrl="~/Images/Carousel/carousel-6.jpg" CssClass="image-carousel" />
             </div>
             <div class="carousel-item">
                 <asp:Image runat="server" ImageUrl="~/Images/Carousel/carousel-1.jpg" CssClass="image-carousel" />
@@ -29,7 +29,7 @@
                 <asp:Image runat="server" ImageUrl="~/Images/Carousel/carousel-2.jpg" CssClass="image-carousel" />
             </div>
             <div class="carousel-item">
-                <asp:Image runat="server" ImageUrl="~/Images/Carousel/carousel-3.jpg" CssClass="image-carousel" />
+                <asp:Image runat="server" ImageUrl="~/Images/Carousel/carousel-5.jpg" CssClass="image-carousel" />
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -136,6 +136,12 @@
             position: relative;
             padding: 0;
             margin: 0;
+            border: 1px solid transparent;
+            background-color: white;
+        }
+
+        .product-panel:hover { 
+            border: 1px solid #00a896;
         }
 
         .title-link {
@@ -149,6 +155,7 @@
 
         .product-img {
             border-radius: 5px 5px 0px 0px;
+            height: 200px;
         }
 
         .title-category {
@@ -224,6 +231,8 @@
             text-align: center;
             margin: 15px;
             padding: 5px;
+            background-color: #00a89650;
+            border-radius: 5px;
         }
 
         .category-panel:hover {
@@ -237,7 +246,7 @@
             width: 80px;
             height: 80px;
             object-fit: cover;
-            border-radius: 2px;
+            border-radius: 5px;
             margin-bottom: 10px;
         }
 

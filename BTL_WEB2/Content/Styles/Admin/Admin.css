@@ -53,6 +53,7 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 20px 50px;
 }
 
 .wrapper-content {

@@ -17,11 +17,11 @@ namespace BTL_WEB2.Pages.WebPage
         {
             productDAO = new ProductDAO();
 
+            displayCategoryRow();
+
             productListBySale = productDAO.getListProduct("sale"); //Lấy sản phẩm sắp xếp theo sale
             productListByBanChay = productDAO.getListProduct("banChay"); //Lấy sản phẩm sắp xếp theo số lượng đã bán
             productListByCayAnQua = productDAO.getListProduct("cayAnQua"); //Lấy sản phẩm cây ăn quả
-
-            displayCategoryRow();
 
             DisplayProducts(saleRow, "sale");
             DisplayProducts(banChayRow, "banChay");
@@ -109,15 +109,13 @@ namespace BTL_WEB2.Pages.WebPage
                 }
 
                 // Tạo nút LinkButton để xem chi tiết sản phẩm
-                LinkButton productLink = new LinkButton
+                HyperLink productLink = new HyperLink
                 {
-                    Text = "Xem chi tiết", // Văn bản của nút
+                    Text = "Xem chi tiết",
                     CssClass = "product-link",
                     Width = Unit.Percentage(100),
-                    CommandArgument = product.getMaSanPham().ToString(),
+                    NavigateUrl = "ChiTietSanPham.aspx?maSP=" + product.getMaSanPham() + "&" + product.getTenSanPham(),
                 };
-                // Gắn sự kiện Click cho nút
-                productLink.Click += ProductLink_Click;
 
 
                 // Thêm các điều khiển vào panel
@@ -191,21 +189,6 @@ namespace BTL_WEB2.Pages.WebPage
             return listProducts;
         }
 
-
-        // Chuyển sang trang xem chi tiết sản phẩm
-        protected void ProductLink_Click(object sender, EventArgs e)
-        {
-            // Lấy thông tin từ nút được nhấn
-            LinkButton clickedButton = (LinkButton)sender;
-            string productId = clickedButton.CommandArgument; // Lấy ID sản phẩm từ CommandArgument
-
-            // Lưu ID sản phẩm vào session nếu cần sử dụng sau
-            Session["SelectedProductId"] = productId;
-
-            // Chuyển hướng đến trang chi tiết sản phẩm
-            Response.Redirect("ChiTietSanPham.aspx");
-        }
-
         //Lấy danh sách danh mục để hiển thị lên đầu trang
         private void displayCategoryRow()
         {
@@ -218,30 +201,33 @@ namespace BTL_WEB2.Pages.WebPage
             foreach (Category category in listCategory)
             {
                 //tạo các khung chứa danh sách danh mục và hiển thị trên Placehoder CategoryRow
-                Panel categoryPanel = new Panel
+                if (category.getTrangThai().Equals("ACTIVATED")) //Trạng thái của danh mục phải là actived mới hiển thị
                 {
-                    CssClass = "category-panel",
-                };
+                    Panel categoryPanel = new Panel
+                    {
+                        CssClass = "category-panel",
+                    };
 
-                // Tạo điều khiển Image
-                Image categoryImage = new Image
-                {
-                    CssClass = "category-img",
-                    ImageUrl = category.getAnhDanhMuc(),
-                    Width = Unit.Percentage(100), // Chiều rộng ảnh
-                };
+                    // Tạo điều khiển Image
+                    Image categoryImage = new Image
+                    {
+                        CssClass = "category-img",
+                        ImageUrl = category.getAnhDanhMuc(),
+                        Width = Unit.Percentage(100), // Chiều rộng ảnh
+                    };
 
-                Label categoryName = new Label
-                {
-                    CssClass = "category-name",
-                    Text = category.getTenDanhMuc(),
-                };
+                    Label categoryName = new Label
+                    {
+                        CssClass = "category-name",
+                        Text = category.getTenDanhMuc(),
+                    };
 
-                //Thêm ảnh và tên danh mục vào vùng chứa
-                categoryPanel.Controls.Add(categoryImage);
-                categoryPanel.Controls.Add(categoryName);
+                    //Thêm ảnh và tên danh mục vào vùng chứa
+                    categoryPanel.Controls.Add(categoryImage);
+                    categoryPanel.Controls.Add(categoryName);
 
-                categoryRow.Controls.Add(categoryPanel);
+                    categoryRow.Controls.Add(categoryPanel);
+                }
             }
         }
     }

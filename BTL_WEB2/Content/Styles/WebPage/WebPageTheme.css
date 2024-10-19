@@ -37,7 +37,7 @@ header {
 .top-bar {
     width: 100%;
     height: 32px;
-    background-color: #00a896;
+    background-image: linear-gradient(to right, #02c39a, #00a896);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -45,6 +45,25 @@ header {
 
 .nav-bar {
     background-color: #02c39a;
+    padding: 20px 0;
+}
+
+.logo {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+}
+
+.action {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+}
+
+.menu {
+    width: 100%;
+    background-color: #05668d;
+    padding: 10px 20px;
 }
 
 ul {
@@ -52,33 +71,35 @@ ul {
     margin: 0;
 }
 
-    .nav-bar ul li {
-        padding: 30px 20px;
-        
+    .menu ul li {
+        padding: 0 20px;
     }
 
-    .nav-bar ul li:hover {
-        background-color: #1dd3b0;
+    .menu ul li:hover a{
+        color: #80ed99; 
+        transition: all 300ms;
     }
 
 .image-carousel {
     width: 100%;
-    height: 500px;
+    height: 600px;
     object-fit: cover;
-}
-
-.searchbar-action {
 }
 
 .searchbar {
     padding: 10px 30px;
     background-color: white;
-    border-radius: 20px;
-    margin-right: 20px;
+    border-radius: 5px;
+    width: 50%;
 }
 
-.searchbar input{
+.search-bar {
+    width: 100%;
+}
+
+.searchbar input {
     border: none;
+    width: 60%
 }
 
 .searchbar input:focus{
@@ -92,7 +113,7 @@ ul {
 }
 
 .content {
-    padding-top: 100px;
+    padding-top: 169.16px;
 }
 
 .contact {
@@ -129,4 +150,21 @@ footer ul li:hover {
 
 footer a:hover {
     color: #02c39a;
+}
+
+.search-box-hidden {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    background-color: #00000095;
+    top: 169.16px;
+    justify-content: center;
+    display: none;
+}
+
+.search-box-content {
+    width: 80%;
+    height: 70%;
+    background-color: white;
+    padding: 20px;
 }

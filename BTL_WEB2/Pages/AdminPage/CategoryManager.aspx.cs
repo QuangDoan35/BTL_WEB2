@@ -84,10 +84,6 @@ namespace BTL_WEB2.Pages.AdminPage
                         img.Attributes.Add("style", "filter: grayscale(100%);"); //Màu chữ và hiệu ứng ảnh đen trắng của hàng khi trạng thái danh mục là không active
                         tableRow.Attributes.Add("style", "color: #B7B7B7;");
                     }
-                    else
-                    {
-                        tableRow.Attributes.Add("style", "color: #15B392;"); //Màu chữ của hàng khi trạng thái danh mục là active
-                    }
 
                     // Thêm hàng vào bảng
                     CategoryTable.Rows.Add(tableRow);
