@@ -155,6 +155,8 @@
     <Content Include="Pages\WebPage\Search.aspx" />
     <Content Include="Pages\WebPage\SenDa.aspx" />
     <Content Include="Pages\WebPage\SieuSALE.aspx" />
+    <Content Include="Pages\WebPage\WebLogin.aspx" />
+    <Content Include="Pages\WebPage\WebRegister.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -338,6 +340,20 @@
     </Compile>
     <Compile Include="Pages\WebPage\SieuSALE.aspx.designer.cs">
       <DependentUpon>SieuSALE.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WebPage\WebLogin.aspx.cs">
+      <DependentUpon>WebLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\WebPage\WebLogin.aspx.designer.cs">
+      <DependentUpon>WebLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WebPage\WebRegister.aspx.cs">
+      <DependentUpon>WebRegister.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\WebPage\WebRegister.aspx.designer.cs">
+      <DependentUpon>WebRegister.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
