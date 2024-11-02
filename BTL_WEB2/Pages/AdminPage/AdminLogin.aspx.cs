@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 using System.Web.Configuration;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace BTL_WEB2.Pages.AdminPage
 {
@@ -24,46 +19,33 @@ namespace BTL_WEB2.Pages.AdminPage
 
             if (ValidateUser(username, password))
             {
+                Session["AdminLogin"] = true; //lưu trạng thái đăng nhập của admin
                 Response.Redirect("CategoryManager.aspx");
             }
             else
             {
-                lblErrorMessage.Text = "Tai khoan hoac mat khau khong ton tai!";
+                lblErrorMessage.Text = "Tài khoản hoặc mật khẩu không chính xác!";
             }
         }
 
 
         private bool ValidateUser(string username, string password)
         {
-            // SQL query to check for username and password in the database
-            string query = "SELECT COUNT(*) FROM Customer WHERE Email = @Email AND Password = @Password";
+            string query = "SELECT * FROM Customer WHERE Email = @Email AND Password = @Password";
 
-            try
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
-                    {
-                        // Open the database connection
-                        conn.Open();
+                    conn.Open();
 
-                        // Add parameters to prevent SQL injection
-                        cmd.Parameters.AddWithValue("@Email", username);
-                        cmd.Parameters.AddWithValue("@Password", password); // Make sure to hash passwords in production!
+                    cmd.Parameters.AddWithValue("@Email", username);
+                    cmd.Parameters.AddWithValue("@Password", password);
 
-                        // Execute the query and get the result
-                        int userCount = (int)cmd.ExecuteScalar();
+                    SqlDataReader reader = cmd.ExecuteReader();
 
-                        // If the result is greater than 0, the user exists
-                        return userCount > 0;
-                    }
+                    return reader.Read();
                 }
-            }
-            catch (Exception ex)
-            {
-                // Log the exception (optional)
-                lblErrorMessage.Text = "An error occurred: " + ex.Message;
-                return false;
             }
         }
     }

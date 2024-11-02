@@ -102,9 +102,6 @@
             <asp:Button ID="btnLogin" runat="server" Text="Login" CssClass="btn-login" OnClick="btnLogin_Click" />
 
             <asp:Label ID="lblErrorMessage" runat="server" CssClass="error-message"></asp:Label>
-
-            <a href="ForgotPassword.aspx">Quên mật khẩu</a>
-            <a href="Register.aspx">Nếu chưa  có tài khoản? Đăng ký</a>
         </div>
     </form>
 

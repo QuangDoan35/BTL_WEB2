@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
+using System.Web;
 using System.Web.Configuration;
 
 namespace BTL_WEB2.Pages.WebPage
@@ -19,47 +20,65 @@ namespace BTL_WEB2.Pages.WebPage
 
             if (ValidateUser(username, password))
             {
+                //Lưu thông tin dăng nhập vào cookies
+                HttpCookie loginCookie = new HttpCookie("loginCookie");
+                loginCookie["userName"] = username;
+                loginCookie.Expires = DateTime.Now.AddDays(30); // Đặt thời gian hết hạn cho cookie là 30 ngày
+
+                // Thêm cookie vào Response
+                Response.Cookies.Add(loginCookie);
+
+                getUserID(username, password);
+
+                //Chuyển đến trang chủ khi đăng nhập thành công
                 Response.Redirect("Default.aspx");
             }
             else
             {
-                lblErrorMessage.Text = "Tai khoan hoac mat khau khong ton tai!";
+                lblErrorMessage.Text = "Tài khoản hoặc mật khẩu không đúng!";
             }
         }
 
 
         private bool ValidateUser(string username, string password)
         {
-            // SQL query to check for username and password in the database
-            string query = "SELECT COUNT(*) FROM Customer WHERE Email = @Email AND Password = @Password";
+            string query = "SELECT * FROM Customer WHERE Email = @Email AND Password = @Password";
 
-            try
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
-                    {
-                        // Open the database connection
-                        conn.Open();
+                    conn.Open();
 
-                        // Add parameters to prevent SQL injection
-                        cmd.Parameters.AddWithValue("@Email", username);
-                        cmd.Parameters.AddWithValue("@Password", password); // Make sure to hash passwords in production!
+                    cmd.Parameters.AddWithValue("@Email", username);
+                    cmd.Parameters.AddWithValue("@Password", password);
 
-                        // Execute the query and get the result
-                        int userCount = (int)cmd.ExecuteScalar();
+                    SqlDataReader reader = cmd.ExecuteReader();
 
-                        // If the result is greater than 0, the user exists
-                        return userCount > 0;
-                    }
+                    return reader.Read();
                 }
             }
-            catch (Exception ex)
-            {
-                // Log the exception (optional)
-                lblErrorMessage.Text = "An error occurred: " + ex.Message;
-                return false;
-            }
+        }
+
+        //Lấy mã người dùng đăng nhập
+        protected void getUserID(string username, string password)
+        {
+            string query = "SELECT * FROM Customer WHERE Email = @Email AND Password = @Password";
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@Email", username);
+            cmd.Parameters.AddWithValue("@Password", password);
+            SqlDataReader reader = cmd.ExecuteReader();
+            reader.Read();
+
+            //Lưu thông tin dăng nhập vào cookies
+            HttpCookie userIDLogin = new HttpCookie("userIDLogin");
+            userIDLogin["userID"] = reader["MaKhachHang"].ToString();
+            userIDLogin.Expires = DateTime.Now.AddDays(30); // Đặt thời gian hết hạn cho cookie là 30 ngày
+            // Thêm cookie vào Response
+            Response.Cookies.Add(userIDLogin);
         }
     }
 }

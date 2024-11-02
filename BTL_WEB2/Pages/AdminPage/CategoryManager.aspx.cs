@@ -22,6 +22,12 @@ namespace BTL_WEB2.Pages.AdminPage
                 ViewState["btnChangeStatus"] = null;
             }
             LoadCategoryTable();
+
+            //Nếu chưa đăng nhập thì chuyển qua trang đăng nhập
+            if (Session["AdminLogin"] == null || (bool)Session["AdminLogin"] == false)
+            {
+                Response.Redirect("AdminLogin.aspx");
+            }
         }
 
         //Hiển thị danh sách danh mục

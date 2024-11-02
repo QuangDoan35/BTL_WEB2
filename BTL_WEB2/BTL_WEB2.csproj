@@ -117,6 +117,7 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\Styles\Admin\Admin.css" />
+    <Content Include="Content\Styles\WebPage\Account.css" />
     <Content Include="Content\Styles\WebPage\ChiTietSanPham.css" />
     <Content Include="Content\Styles\WebPage\WebPageTheme.css" />
     <Content Include="df.aspx" />
@@ -141,6 +142,7 @@
     <Content Include="Images\Product\DM008\DM008.jpg" />
     <Content Include="Images\Product\DM009\DM009.jpg" />
     <Content Include="Images\Product\DM010\DM010.jpg" />
+    <Content Include="Images\user-avatar.jpg" />
     <Content Include="Pages\AdminPage\AdminLogin.aspx" />
     <Content Include="Pages\AdminPage\ProductManager.aspx" />
     <Content Include="Pages\AdminPage\CategoryManager.aspx" />

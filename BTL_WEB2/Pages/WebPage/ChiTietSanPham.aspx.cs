@@ -163,15 +163,13 @@ namespace BTL_WEB2.Pages.WebPage
                 };
 
                 // Tạo nút LinkButton để xem chi tiết sản phẩm
-                LinkButton productLink = new LinkButton
+                HyperLink productLink = new HyperLink
                 {
-                    Text = "Xem chi tiết", // Văn bản của nút
+                    Text = "Xem chi tiết",
                     CssClass = "product-link",
                     Width = Unit.Percentage(100),
-                    CommandArgument = product.getMaSanPham().ToString(),
+                    NavigateUrl = "ChiTietSanPham.aspx?maSP=" + product.getMaSanPham() + "&" + product.getTenSanPham(),
                 };
-                // Gắn sự kiện Click cho nút
-                productLink.Click += ProductLink_Click;
 
 
                 // Thêm các điều khiển vào panel
@@ -195,22 +193,6 @@ namespace BTL_WEB2.Pages.WebPage
 
                 i++;
             }
-        }
-
-        //Sự kiện bấm nút
-        protected void ProductLink_Click(object sender, EventArgs e)
-        {
-            // Lấy thông tin từ nút được nhấn
-            LinkButton clickedButton = (LinkButton)sender;
-            string productId = clickedButton.CommandArgument; // Lấy ID sản phẩm từ CommandArgument
-
-            // Lưu ID sản phẩm vào session nếu cần sử dụng sau
-            Session["SelectedProductId"] = productId;
-
-            // Chuyển hướng đến trang chi tiết sản phẩm
-            Response.Redirect("ChiTietSanPham.aspx");
-
-            Response.Redirect(Request.RawUrl); //Load lại trang và hiện sản phẩm mới
         }
 
         //Tạo danh sách sản phẩm gợi ý tương tự, in ra 5 sản phẩm trên một dòng
@@ -238,6 +220,26 @@ namespace BTL_WEB2.Pages.WebPage
             }
 
             return listSuggetsProduct;
+        }
+
+        //Nút bấm mua sản phẩm
+        protected void BtnBuy_Click(object sender, EventArgs e)
+        {
+            //Kiem tra xem nguoi dung da dang nhap chua
+            if (Request.Cookies["loginCookie"] != null)
+            {
+                containerAlert.Attributes["style"] = "display: flex;";
+            }
+            //Neu chua dang nhap thi chuyen sang trang dang nhap
+            else
+            {
+                Response.Redirect("WebLogin.aspx");
+            }
+        }
+
+        protected void CloseAlert_Click(object sender, EventArgs e)
+        {
+            containerAlert.Attributes["style"] = "display: none;";
         }
     }
 }

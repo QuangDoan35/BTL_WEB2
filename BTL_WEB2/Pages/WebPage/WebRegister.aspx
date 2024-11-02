@@ -87,7 +87,7 @@ input[type="submit"]:hover {
 <body>
     <form id="form1" runat="server">
         <div class="register-container">
-            <h2>Simple Registration</h2>
+            <h2>Đăng ký tài khoản</h2>
             <asp:TextBox ID="txtName" runat="server" placeholder="Họ Và Tên"></asp:TextBox><br />
             <asp:TextBox ID="txtEmail" runat="server" placeholder="Email"></asp:TextBox><br />
             <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" placeholder="Mật khẩu"></asp:TextBox><br />

@@ -6,6 +6,15 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentWebPage" runat="server">
     <div class="wrapper">
+        <!--Hộp thoại xuất hiện thông báo mua hàng thành công khi người dùng bấm vào nút mua-->
+        <div class="container-alert" runat="server" id="containerAlert">
+            <div class="alert">
+                <h5>Mua hàng thành công</h5>
+                <p>Cảm ơn bạn vì đã đặt hàng</p>
+                <asp:LinkButton CssClass="btn-alert" ID="LinkButton2" runat="server" OnClick="CloseAlert_Click">Đóng</asp:LinkButton>
+            </div>
+        </div>
+
         <!--Giới thiệu sản phẩm-->
         <div class="product-briefing">
             <!--Ảnh sản phẩm và chia sẻ sản phẩm-->
@@ -49,7 +58,7 @@
                         <i class="bi bi-cart2"></i>
                         <asp:Button ID="btnAddCart" runat="server" Text="Thêm Vào Giỏ Hàng" CssClass="btn-addtocart" />
                     </div>
-                    <asp:Button ID="btnBuy" runat="server" Text="Mua Ngay" CssClass="btn-buy" />
+                    <asp:Button ID="btnBuy" runat="server" Text="Mua Ngay" CssClass="btn-buy" OnClick="BtnBuy_Click"/>
                 </div>
             </div>
         </div>

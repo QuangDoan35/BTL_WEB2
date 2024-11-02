@@ -88,7 +88,7 @@
 <body>
     <form id="form1" runat="server">
         <div class="login-container">
-            <h2>User Login</h2>
+            <h2>Đăng nhập</h2>
 
             <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control" placeholder="Username"></asp:TextBox>
 
